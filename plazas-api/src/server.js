@@ -1,3 +1,4 @@
+// Cuando arranco la API, leo la configuración y espero a que conecte con MongoDB antes de recibir pedidos.
 require('dotenv').config();
 const app = require('./app');
 const connectDB = require('./config/db');

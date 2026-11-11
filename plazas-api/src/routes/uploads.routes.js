@@ -3,6 +3,7 @@ const multer = require('multer');
 const cloudinary = require('../config/cloudinary');
 const auth = require('../middleware/auth');
 
+// Antes de subir la foto, Multer revisa el formato y cuánto pesa.
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
@@ -21,6 +22,7 @@ router.post('/image', auth, (req, res) => {
     }
     if (!req.file) return res.status(400).json({ message: 'Falta el archivo (campo "image")' });
 
+    // Acá subo la imagen a Cloudinary. Su enlace es el que después se usa para mostrarla.
     const stream = cloudinary.uploader.upload_stream(
       {
         folder: 'plazas',

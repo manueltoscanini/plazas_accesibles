@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+// Es el mismo visor para la foto de la ficha y para verla más grande.
 export default function PhotoGallery({ photos, label, captions, startAt = 0, onOpen }) {
   const [index, setIndex] = useState(startAt)
   const [failedUrl, setFailedUrl] = useState(null)
@@ -13,6 +14,7 @@ export default function PhotoGallery({ photos, label, captions, startAt = 0, onO
     ? <p className="photo-status" role="status">No se pudo cargar esta foto.</p>
     : <img src={url} alt={`${label}${caption ? `, ${caption}` : ''}, foto ${position}`} onError={() => setFailedUrl(url)} />
 
+  // Si pasás la última foto, volvés a la primera. Si retrocedés desde la primera, vas a la última.
   function move(offset) {
     setIndex(current => (current + offset + photos.length) % photos.length)
   }

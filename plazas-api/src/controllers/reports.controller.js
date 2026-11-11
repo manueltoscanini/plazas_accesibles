@@ -17,6 +17,7 @@ const PIC_RE = /^(add|delete)Picture$/;
 const FIELDS = ['description', 'picture', 'lat', 'lon', 'accessible'];
 const PHOTO_CATEGORIES = new Set(['ramps', 'wcs', 'accessibleWcs', 'playgrounds', 'hazards']);
 
+// Según la categoría, sé en qué parte de la plaza tengo que guardar la foto cuando se apruebe.
 function photoField(category = 'all') {
   if (category === 'all') return 'pictures';
   if (category === 'paths') return 'paths.pictures';
@@ -37,6 +38,7 @@ function pick(data) {
   return out;
 }
 
+// Antes de guardar el reporte, reviso qué quiere cambiar, las coordenadas y el enlace de la foto.
 function validateChanges(changes) {
   if (!changes || typeof changes !== 'object' || Array.isArray(changes) || !Object.keys(changes).length) {
     return 'changes debe ser un objeto con al menos un cambio';
@@ -159,6 +161,7 @@ exports.create = async (req, res) => {
       return res.status(404).json({ message: 'Plaza no encontrada' });
     }
 
+    // Si un administrador agrega solo una foto, guardo la aprobación y la foto juntas. Si manda un hallazgo, queda pendiente.
     const data = { publicSquareId, userId: req.user.id, changes };
     let report;
     if (req.user.role === 'admin' && Object.keys(changes).length === 1 && Object.hasOwn(changes, 'addPicture')) {

@@ -7,6 +7,7 @@ const requireRole = require('../middleware/requireRole');
 router.get('/list', c.list);
 router.get('/:id', c.getById);
 
+// Cualquiera puede ver una plaza. Para agregarla o editarla, la API pide el rol de administrador.
 router.post('/', auth, requireRole('admin'), c.create);
 router.patch('/:id', auth, requireRole('admin'), c.update);
 

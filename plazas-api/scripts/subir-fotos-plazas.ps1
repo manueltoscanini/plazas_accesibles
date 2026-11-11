@@ -1,4 +1,5 @@
-﻿param(
+﻿# Este script sirve para cargar fotos generales en plazas que ya existen. Le pasás un token de administrador y usás enlaces directos a imágenes.
+param(
     [Parameter(Mandatory = $true)]
     [string]$Token,
     [string]$Base = "http://localhost:3000",
@@ -20,6 +21,7 @@ $headers = @{ Authorization = "Bearer $Token" }
 $seleccion = if ($Plaza -eq "todas") { $plazas } else { @($plazas | Where-Object { $_.nombre -eq $Plaza }) }
 if (!$seleccion) { throw "Plaza '$Plaza' no encontrada. Opciones: todas, Constitución, Artigas, Acuña de Figueroa, Rivera, Colón, Bella Vista, Deportes." }
 
+# Por cada plaza, subo la foto, leo las que ya tiene y agrego la nueva.
 foreach ($p in $seleccion) {
     try {
         $subida = Invoke-RestMethod -Method Post -Uri "$Base/api/uploads/image-url" `

@@ -1,3 +1,4 @@
+/* Acá están el encabezado, el mapa y el panel de la derecha. */
 .site-header { height: 88px; padding: 0 32px; display: flex; align-items: center; gap: 27px; border-bottom: 1px solid var(--line); background: #fff; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 15px; line-height: 1.12; letter-spacing: -.4px; }
 .brand strong { display: block; font-weight: 700; }
@@ -34,6 +35,7 @@
 .square-copy strong { font-size: 14px; font-weight: 600; }
 .square-copy > span { font-size: 12px; color: var(--muted); line-height: 1.4; }
 .item-arrow { margin-left: auto; color: #92a28f; font-size: 17px; }
+/* Esto acomoda lo que va arriba del mapa: los botones, los marcadores y la leyenda. */
 .map-area { position: relative; min-width: 0; min-height: 0; background: #edf0e8; }
 .map { width: 100%; height: 100%; z-index: 0; }
 .leaflet-tile-pane { filter: saturate(.48); }
@@ -63,6 +65,7 @@
 .detail-panel { min-height: 0; overflow-y: auto; }
 .detail-toolbar { position: sticky; top: 0; z-index: 1; background: #fff; padding: 10px 22px; border-bottom: 1px solid var(--line); }
 .detail-toolbar button { font-size: 12px; min-height: 40px; }
+/* Acá doy forma a las fotos y a la lista de revisión. Cuando ampliás una foto, se muestra entera. */
 .photo-frame { border-radius: 7px; overflow: hidden; background: #f5f7f1; }
 .photo-figure { margin: 0; }
 .photo-figure figcaption { margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--green); }
@@ -132,6 +135,7 @@ form textarea { resize: vertical; }
 .profile-security h3 { margin-bottom: 14px; font-size: 17px; }
 .profile-logout { margin-top: 18px; min-height: 44px; }
 .report-success { padding: 20px 0; }
+/* Le doy más lugar al mapita del reporte para que puedas marcar mejor el punto. */
 .report-dialog { width: 680px; }
 .finding-fields { display: flex; flex-direction: column; gap: 16px; min-width: 0; margin: 0; padding: 0; border: 0; }
 .finding-fields:disabled .finding-map { pointer-events: none; }
@@ -145,6 +149,7 @@ form textarea { resize: vertical; }
 .finding-marker { background: #bd5a35; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 1px 6px #263d3570; }
 .finding-map-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-top: 10px; }
 .finding-map-actions p { color: var(--muted); font-size: 12px; }
+/* En celular, pongo el mapa arriba y la ficha o la lista abajo. */
 @media (max-width: 760px) {
   .site-header { height: 72px; padding: 0 18px; gap: 12px; }
   .brand { font-size: 13px; }

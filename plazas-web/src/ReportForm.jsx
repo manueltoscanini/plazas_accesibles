@@ -4,6 +4,7 @@ import LocationPicker from './LocationPicker'
 
 import { photoAccept, uploadPhoto } from './photoUpload'
 
+// Acá contás qué encontraste, marcás dónde queda y podés adjuntar una foto.
 export default function ReportForm({ square, token, onExpired }) {
   const [type, setType] = useState('Hazard')
   const [position, setPosition] = useState(null)
@@ -13,6 +14,7 @@ export default function ReportForm({ square, token, onExpired }) {
   const [sent, setSent] = useState(false)
   const asksAccessibility = type === 'WC' || type === 'Playground'
 
+  // Antes de mandar el reporte miro que haya texto y un punto. Si pusiste una foto, la subo primero.
   async function submit(event) {
     event.preventDefault()
     const values = new FormData(event.currentTarget)
@@ -23,6 +25,7 @@ export default function ReportForm({ square, token, onExpired }) {
     const file = values.get('image')
     setError('')
     try {
+      // Me guardo el enlace por si hay que reintentar el envío. Así no subo la misma foto otra vez.
       let picture = uploadedPicture
       if (file?.name && !picture) {
         setStep('Subiendo foto…')
@@ -36,6 +39,7 @@ export default function ReportForm({ square, token, onExpired }) {
         body: {
           publicSquareId: square._id,
           changes: {
+            // Según lo que elegiste, armo el nombre del cambio. Por ejemplo, una rampa va como addRamp.
             [`add${type}`]: {
               description,
               ...position,

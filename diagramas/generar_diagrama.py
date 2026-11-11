@@ -19,6 +19,7 @@ AUTHORING = HARNESS / 'cli_anything/drawio/utils/drawio_xml.py'
 SOURCE_URL = 'https://docs.google.com/document/d/15zNIaKjulXEgN9O7NYvCQa2mFl9X1IDOeQhBfVDFpvY/edit'
 
 
+# Acá cargo la herramienta que me deja armar el archivo de draw.io.
 def load_authoring():
     tree = ast.parse(AUTHORING.read_text(encoding='utf-8'), filename=str(AUTHORING))
     tree.body = [node for node in tree.body if not (
@@ -30,6 +31,7 @@ def load_authoring():
     return module
 
 
+# Acá dibujo las entidades y reviso que el archivo final haya quedado bien armado.
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', required=True)

@@ -2,11 +2,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+// Acá armo el token con el ID de la cuenta y la versión de la sesión.
 const signToken = (user) =>
   jwt.sign({ id: user._id, sessionVersion: user.sessionVersion ?? 0 }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
 const profileFields = ['firstName', 'lastName', 'email', 'phone'];
 
+// Devuelvo solo los datos del perfil. El hash de la contraseña se queda en el servidor.
 function profile(user) {
   const { firstName, lastName, email, phone = '', role } = user;
   return { firstName, lastName, email, phone, role };
@@ -21,6 +23,7 @@ exports.checkEmail = async (req, res) => {
   res.json({ result: !!user });
 };
 
+// Cuando creás una cuenta, bcrypt convierte la contraseña en un hash antes de guardarla.
 exports.register = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
@@ -35,6 +38,7 @@ exports.register = async (req, res) => {
   }
 };
 
+// Busco la cuenta y comparo la contraseña. Si está bien, te devuelvo el token y el rol.
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -54,6 +58,7 @@ exports.me = async (req, res) => {
   }
 };
 
+// Solo guardo los datos editables. Si cambiaste el correo, reviso la contraseña actual antes de guardar.
 exports.updateMe = async (req, res) => {
   const body = req.body ?? {};
   const changes = {};
@@ -104,6 +109,7 @@ exports.updateMe = async (req, res) => {
   }
 };
 
+// Guardo el hash nuevo y actualizo la versión de sesión. Te mando otro token para que puedas seguir en esta pestaña.
 exports.changePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body ?? {};
   if (typeof newPassword !== 'string' || newPassword.length < 8 || Buffer.byteLength(newPassword) > 72) {

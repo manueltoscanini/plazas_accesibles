@@ -22,6 +22,7 @@ const EDITABLE = [
   'wc', 'playground', 'ramps', 'paths', 'pictures',
 ];
 
+// De todo lo que llega, me quedo con los campos que se pueden editar en una plaza.
 function pickEditable(body) {
   const data = {};
   for (const key of EDITABLE) {
@@ -34,6 +35,7 @@ function pickEditable(body) {
 // Si no se pasa lat/lon, devuelve todas las plazas.
 exports.list = async (req, res) => {
   try {
+    // Devuelvo lo que hace falta para la lista. Si mandás coordenadas, también puedo mostrar las plazas más cercanas.
     const squares = await Square.find()
       .select('name location wc playground ramps paths.exists paths.accessible hazards.exists updatedAt demo')
       .lean();
@@ -68,6 +70,7 @@ exports.getById = async (req, res) => {
     if (!square) return res.status(404).json({ message: 'Plaza no encontrada' });
 
     const q = { publicSquareId: square._id };
+    // Para la ficha junto los datos de la plaza con los baños, juegos, rampas y obstáculos que tiene asociados.
     const [wcs, playgrounds, ramps, hazards] = await Promise.all([
       WC.find(q).lean(),
       Playground.find(q).lean(),

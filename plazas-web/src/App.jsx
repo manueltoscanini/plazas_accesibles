@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Map from './Map'
 import Account from './Account'
+import CreateSquareForm from './CreateSquareForm'
 import GalleryPhotoForm from './GalleryPhotoForm'
 import Modal from './Modal'
 import Profile from './Profile'
@@ -10,6 +11,7 @@ import SquareDetail from './SquareDetail'
 import { request } from './api'
 import './App.css'
 
+// Acá junto el mapa, la ficha y las ventanas. Con useState React se acuerda de cosas como la plaza que elegiste.
 export default function App() {
   const [squares, setSquares] = useState([])
   const [loading, setLoading] = useState(true)
@@ -26,6 +28,7 @@ export default function App() {
   // La sesión vive en memoria y se cierra al recargar la página.
   const [session, setSession] = useState(null)
   const token = session?.token
+  const isAdmin = session?.role === 'admin'
   const canReview = ['admin', 'trusted'].includes(session?.role)
   const [userLocation, setUserLocation] = useState(null)
   const [locating, setLocating] = useState(false)
@@ -33,6 +36,7 @@ export default function App() {
   const [reset, setReset] = useState(0)
   const panel = useRef(null)
 
+  // Cuando entrás o pedís actualizar, acá traigo la lista de plazas. Si arranca otra consulta, cancelo la anterior.
   useEffect(() => {
     const controller = new AbortController()
     async function load() {
@@ -49,6 +53,7 @@ export default function App() {
     return () => controller.abort()
   }, [reload])
 
+  // Cuando cambia selectedId, pido la ficha de esa plaza. Si tocás otra antes de que cargue, cancelo el pedido anterior.
   useEffect(() => {
     if (!selectedId) return
     const controller = new AbortController()
@@ -67,14 +72,17 @@ export default function App() {
     return () => controller.abort()
   }, [selectedId, reload])
 
+  // Toques la lista o un punto del mapa, venís a parar a la misma función. Acá guardo cuál plaza elegiste.
   const selectSquare = useCallback(id => {
     setSelectedId(id)
     panel.current?.focus()
   }, [])
   const search = query.trim().toLocaleLowerCase('es')
+  // Filtro las plazas una sola vez y uso ese resultado para la lista y para el mapa.
   const visible = squares.filter(square => square.name.toLocaleLowerCase('es').includes(search)
     && (filter === 'all' || square[filter]?.exists))
 
+  // Cuando tocás «Mi ubicación», el navegador pide permiso. Si lo das, le paso tu posición al mapa.
   function locate() {
     setLocationError('')
     if (!navigator.geolocation) { setLocationError('Este navegador no permite consultar tu ubicación.'); return }
@@ -88,6 +96,7 @@ export default function App() {
     }, { timeout: 10000 })
   }
 
+  // Cuando volvés a las plazas, saco la ficha y vuelvo a la vista general del mapa.
   function closeDetail() {
     setSelectedId(null)
     setDetail(null)
@@ -95,24 +104,38 @@ export default function App() {
     panel.current?.focus()
   }
 
+  // Al tocar el logo, vuelvo al inicio dentro de la app. Como no recargo la página, la sesión sigue abierta.
   function goHome() {
     setQuery('')
     setFilter('all')
     closeDetail()
   }
 
+  // Me guardo de qué galería venís para abrir esa misma categoría si primero tenés que iniciar sesión.
   function addPhoto(category) {
     setPhotoCategory(category)
     setModal(token ? 'photo' : 'photo-login')
   }
 
+  // Si la API devuelve 401, borro el token y te llevo al inicio de sesión para que puedas seguir.
   function loginAgain(nextModal) {
     setSession(null)
     setModal(nextModal)
   }
 
+  // Después de aprobar algo, vuelvo a pedir la lista y la ficha para que se vea el cambio.
   function refreshSquares() { setReload(value => value + 1) }
 
+  // Después de guardar, actualizo el mapa y abro la ficha nueva.
+  function squareCreated(id) {
+    setModal(null)
+    setQuery('')
+    setFilter('all')
+    selectSquare(id)
+    refreshSquares()
+  }
+
+  // Acá está lo que se ve en pantalla. A la derecha pongo la lista o la ficha, según lo que hayas tocado.
   return <>
     <a className="skip-link" href="#plazas" onClick={selectedId ? closeDetail : undefined}>Ir a la lista de plazas</a>
     <header className="site-header" id="inicio">
@@ -120,6 +143,7 @@ export default function App() {
       <span className="header-place">Paysandú, Uruguay</span>
       <nav aria-label="Navegación principal"><a className="nav-active" href="#plazas" onClick={selectedId ? closeDetail : undefined}>Explorar plazas</a><button className="nav-about" aria-label="Sobre el proyecto" onClick={() => setModal('about')}><span>Sobre el </span>proyecto</button>
         {canReview && <button className="nav-review" aria-label="Revisar reportes" onClick={() => setModal('review')}>Revisar<span> reportes</span></button>}
+        {isAdmin && <button className="nav-review" onClick={() => setModal('create-square')}>Agregar plaza</button>}
         <button className="login-button" onClick={() => setModal(token ? 'profile' : 'account')}>{token ? 'Mi perfil' : 'Iniciar sesión'} <span aria-hidden="true">↗</span></button></nav>
     </header>
     <main className="explorer">
@@ -164,7 +188,7 @@ export default function App() {
       </aside>
     </main>
     <footer className="site-footer"><p><span aria-hidden="true">ⓘ</span> Proyecto académico. La información puede incluir datos de demostración.</p><span>Plazas Accesibles · Paysandú</span></footer>
-    {modal && <Modal className={modal === 'report' || modal === 'review' ? 'report-dialog' : undefined} onClose={() => setModal(null)}>
+    {modal && <Modal className={['report', 'review', 'create-square'].includes(modal) ? 'report-dialog' : undefined} onClose={() => setModal(null)}>
       {['account', 'report-login', 'photo-login'].includes(modal) && <Account
         onLogin={setSession}
         onClose={() => setModal({ 'report-login': 'report', 'photo-login': 'photo' }[modal] ?? null)}
@@ -172,6 +196,7 @@ export default function App() {
       {modal === 'report' && detail && <ReportForm square={detail} token={token} onExpired={() => loginAgain('report-login')} />}
       {modal === 'photo' && detail && <GalleryPhotoForm square={detail} category={photoCategory} token={token} onPublished={refreshSquares} onExpired={() => loginAgain('photo-login')} />}
       {modal === 'review' && canReview && <ReportReview squares={squares} token={token} onApproved={refreshSquares} />}
+      {modal === 'create-square' && isAdmin && <CreateSquareForm token={token} onCreated={squareCreated} />}
       {modal === 'profile' && token && <Profile
         token={token}
         onSession={updated => setSession(current => current?.token === token ? updated : current)}

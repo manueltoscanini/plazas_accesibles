@@ -3,17 +3,20 @@ import { request } from './api'
 import { photoAccept, uploadPhoto } from './photoUpload'
 import { photoTitles } from './photos'
 
+// Desde acá aportás una foto a la galería que estabas viendo, sin marcar un hallazgo nuevo.
 export default function GalleryPhotoForm({ square, category, token, onPublished, onExpired }) {
   const [step, setStep] = useState('')
   const [url, setUrl] = useState(null)
   const [status, setStatus] = useState(null)
   const [error, setError] = useState('')
 
+  // Primero subo el archivo. Con el enlace que vuelve, armo el reporte con la categoría de la foto.
   async function submit(event) {
     event.preventDefault()
     const file = new FormData(event.currentTarget).get('image')
     setError('')
     try {
+      // Si la foto ya se subió y falló el reporte, al reintentar uso el enlace que ya tengo.
       let photo = url
       if (!photo) {
         setStep('Subiendo foto…')

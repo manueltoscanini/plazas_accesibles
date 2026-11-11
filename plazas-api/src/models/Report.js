@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Acá queda lo que propuso la persona, quién lo mandó, quién lo revisó y en qué estado está.
 const reportSchema = new Schema(
   {
     publicSquareId: { type: Schema.Types.ObjectId, ref: 'PublicSquare', required: true, index: true },

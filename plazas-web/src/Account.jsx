@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { request } from './api'
 
+// Acá podés entrar con tu cuenta o crear una nueva.
 export default function Account({ onLogin, onClose }) {
   const [register, setRegister] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
+  // Cuando entrás, la API me devuelve el token y el rol. App se los guarda y, si venías de un reporte o una foto, te lleva de vuelta.
   async function submit(event) {
     event.preventDefault()
     setBusy(true)

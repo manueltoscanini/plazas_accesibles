@@ -5,6 +5,7 @@ const Square = require('../src/models/PublicSquare');
 const { WC, Playground, Ramp, Hazard } = require('../src/models/elements');
 const controller = require('../src/controllers/square.controller');
 
+// Pruebo cómo se arman y se editan las fichas usando datos de prueba.
 test('guarda fotos de caminos en el modelo de plaza', async () => {
   const square = new Square({
     name: 'Prueba', location: { lat: -32, lon: -58 },

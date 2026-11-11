@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+// Antes de entrar a una ruta privada, reviso el token y miro si la cuenta sigue habilitada.
 module.exports = async function auth(req, res, next) {
   const header = req.headers.authorization || '';
   const token = header.startsWith('Bearer ') ? header.slice(7) : null;
@@ -18,6 +19,7 @@ module.exports = async function auth(req, res, next) {
     if (!user || !user.enabled) {
       return res.status(401).json({ message: 'Cuenta no disponible' });
     }
+    // Si la versión del token quedó vieja después de cambiar la contraseña, te pido iniciar sesión de nuevo.
     if ((req.user.sessionVersion ?? 0) !== (user.sessionVersion ?? 0)) {
       return res.status(401).json({ message: 'La sesión venció. Volvé a iniciar sesión.' });
     }

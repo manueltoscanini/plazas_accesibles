@@ -8,6 +8,7 @@ const controller = require('../src/controllers/users.controller');
 const id = '507f1f77bcf86cd799439011';
 const currentPassword = 'anterior-123';
 
+// Uso una cuenta de prueba para revisar el perfil y el cambio de contraseña.
 async function fixture(t) {
   const user = {
     _id: id, firstName: 'Ana', lastName: 'Pérez', email: 'ana@example.com',

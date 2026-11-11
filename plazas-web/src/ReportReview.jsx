@@ -5,6 +5,7 @@ import { photoTitles } from './photos'
 const actions = { add: 'Agregar', modify: 'Modificar', delete: 'Quitar' }
 const elements = { WC: 'baño', Playground: 'zona de juegos', Ramp: 'rampa', Hazard: 'obstáculo' }
 
+// Acá cambio nombres como addWC por algo que se pueda leer, como «Agregar baño».
 function describeChange(key, change) {
   if (key === 'addPicture' || key === 'deletePicture') {
     const category = Object.hasOwn(photoTitles, change.category) ? change.category : 'all'
@@ -14,6 +15,7 @@ function describeChange(key, change) {
   return match ? `${actions[match[1]]} ${elements[match[2]]}` : 'Cambio en la ficha'
 }
 
+// Es la pantalla donde ves los reportes pendientes y elegís si se aprueban o se rechazan.
 export default function ReportReview({ squares, token, onApproved }) {
   const [reports, setReports] = useState(null)
   const [error, setError] = useState('')
@@ -21,6 +23,7 @@ export default function ReportReview({ squares, token, onApproved }) {
   const [busy, setBusy] = useState(null)
   const [reload, setReload] = useState(0)
 
+  // Al abrir esta ventana pido los pendientes. Si la cerrás, cancelo el pedido.
   useEffect(() => {
     const controller = new AbortController()
     request('/reports/pending', { token, signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]) })
@@ -32,6 +35,7 @@ export default function ReportReview({ squares, token, onApproved }) {
     return () => controller.abort()
   }, [token, reload])
 
+  // Le mando a la API lo que decidiste. Si ya se resolvió, lo saco de la lista.
   async function review(report, action) {
     setBusy(report._id)
     setError('')

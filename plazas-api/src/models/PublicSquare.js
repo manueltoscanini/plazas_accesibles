@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Así guardo una plaza: dónde queda, qué condiciones de accesibilidad tiene y sus fotos.
 const squareSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
@@ -24,6 +25,7 @@ const squareSchema = new mongoose.Schema(
       exists: { type: Boolean, default: false },
     },
     pictures: { type: [String], default: [] },
+    // Acá quedan los enlaces de las fotos que ya se aprobaron, separados por categoría.
     galleryPictures: { type: Map, of: [String] },
   },
   { timestamps: true } // crea createdAt y updatedAt automaticamente

@@ -2,6 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { request } from './api.js'
 
+// Simulo fetch para ver qué manda la web y qué hace si la API devuelve un error.
 test('sends login JSON and returns the API token', async () => {
   const originalFetch = globalThis.fetch
   globalThis.fetch = async (url, options) => {

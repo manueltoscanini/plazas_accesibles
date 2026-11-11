@@ -13,6 +13,7 @@ import json
 from generar_diagrama import load_authoring
 
 
+# Acá armo el dibujo de los conceptos y las relaciones. Al final reviso que estén todas las partes.
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', required=True)

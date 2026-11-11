@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../src/models/User');
 const auth = require('../src/middleware/auth');
 
+// Pruebo qué pasa si la cuenta está habilitada, si ya no existe o si el token quedó viejo.
 for (const [caso, user, expected] of [
   ['cuenta habilitada', { enabled: true, role: 'user' }, 200],
   ['cuenta deshabilitada', { enabled: false }, 401],

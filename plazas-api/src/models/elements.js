@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Las rampas, los baños, los juegos y los obstáculos se guardan aparte, con un ID que los conecta con su plaza.
 function makeElement(name, withAccessible) {
   const fields = {
     publicSquareId: { type: mongoose.Schema.Types.ObjectId, ref: 'PublicSquare', required: true, index: true },

@@ -2,6 +2,7 @@ import { request } from './api'
 
 export const photoAccept = 'image/jpeg,image/png,image/webp'
 
+// Acá mando la foto al servidor. Me devuelve un enlace de Cloudinary que después va en el reporte.
 export async function uploadPhoto(file, token) {
   if (!file?.name || !photoAccept.split(',').includes(file.type) || !file.size || file.size > 5 * 1024 * 1024) {
     throw new Error('Elegí una foto JPG, PNG o WEBP de hasta 5 MB.')

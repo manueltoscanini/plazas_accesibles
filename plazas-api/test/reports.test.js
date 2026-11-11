@@ -6,6 +6,7 @@ const Square = require('../src/models/PublicSquare');
 const { WC, Ramp, Hazard } = require('../src/models/elements');
 const controller = require('../src/controllers/reports.controller');
 
+// Pruebo cuándo una foto queda pendiente y si al aprobar se guardan todos los cambios juntos.
 for (const role of ['user', 'admin']) {
   test(`foto de una galería enviada por ${role}`, async (t) => {
     const previous = process.env.CLOUDINARY_CLOUD_NAME;

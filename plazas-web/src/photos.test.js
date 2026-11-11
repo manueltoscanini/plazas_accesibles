@@ -2,6 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { getPhotoCaptions, getSquarePhotos } from './photos.js'
 
+// Pruebo que la galería ponga cada foto donde va y que una foto repetida salga una sola vez.
 test('agrupa las fotos y muestra primero las generales sin repetirlas', () => {
   const general = 'https://example.com/plaza.jpg'
   const ramp = 'https://example.com/rampa.jpg'

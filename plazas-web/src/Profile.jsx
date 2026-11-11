@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { request } from './api'
 
+// Acá están tus datos y, en otro formulario, el cambio de contraseña.
 export default function Profile({ token, onSession, onLogout }) {
   const [details, setDetails] = useState(null)
   const [savedEmail, setSavedEmail] = useState('')
@@ -9,6 +10,7 @@ export default function Profile({ token, onSession, onLogout }) {
   const [feedback, setFeedback] = useState(null)
   const emailChanged = details && details.email.trim().toLowerCase() !== savedEmail
 
+  // Con el token la API ya sabe de quién es el perfil. Por eso acá pido /users/me sin mandar un ID.
   useEffect(() => {
     const controller = new AbortController()
     request('/users/me', { token, signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]) })
@@ -24,10 +26,12 @@ export default function Profile({ token, onSession, onLogout }) {
     return () => controller.abort()
   }, [token])
 
+  // Guardo lo que vas escribiendo en React hasta que toques «Guardar cambios».
   function edit(field, value) {
     setDetails(current => ({ ...current, [field]: value }))
   }
 
+  // Mando los cambios con PATCH. Si cambiaste el correo, también mando la contraseña actual.
   async function saveProfile(event) {
     event.preventDefault()
     const body = Object.fromEntries(new FormData(event.currentTarget))
@@ -43,6 +47,7 @@ export default function Profile({ token, onSession, onLogout }) {
     } finally { setBusy(false) }
   }
 
+  // Primero miro que las dos contraseñas nuevas coincidan. Después, si la API confirma el cambio, uso el token nuevo.
   async function changePassword(event) {
     event.preventDefault()
     const form = event.currentTarget
@@ -63,6 +68,7 @@ export default function Profile({ token, onSession, onLogout }) {
     } finally { setBusy(false) }
   }
 
+  // Muestro el mensaje en el formulario que acabás de usar.
   function status(section) {
     if (feedback?.section !== section) return null
     return feedback.error

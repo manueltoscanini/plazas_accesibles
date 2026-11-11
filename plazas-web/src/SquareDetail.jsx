@@ -3,6 +3,7 @@ import Modal from './Modal'
 import PhotoGallery from './PhotoGallery'
 import { getPhotoCaptions, getSquarePhotos, photoTitles } from './photos'
 
+// Acá armo lo que ves cuando abrís una plaza: accesibilidad, fotos y botones para aportar.
 export default function SquareDetail({ square, signedIn, onReport, onAddPhoto }) {
   const [gallery, setGallery] = useState(null)
   const photos = getSquarePhotos(square)
@@ -10,6 +11,7 @@ export default function SquareDetail({ square, signedIn, onReport, onAddPhoto })
   const paths = square.paths
   const hasAccessibleWc = square.elements?.wcs?.some(wc => wc.accessible)
   const updatedAt = Date.parse(square.updatedAt)
+  // Cada fila muestra una condición de la plaza y abre las fotos de ese tipo.
   const conditions = [
     { category: 'ramps', label: 'Rampas', value: square.ramps?.exists ? 'Hay rampas' : 'Sin rampas registradas' },
     { category: 'paths', label: 'Caminos internos', value: paths?.description || (paths?.exists ? (paths.accessible ? 'Registrados como accesibles' : 'Consultar condiciones') : 'Sin caminos registrados') },
@@ -38,6 +40,7 @@ export default function SquareDetail({ square, signedIn, onReport, onAddPhoto })
     {square.accessibilityDescription && <div className="accessibility-note">
       <h3>Sobre la accesibilidad</h3><p>{square.accessibilityDescription}</p>
     </div>}
+    {/* Acá muestro la descripción de cada obstáculo que trae la ficha. */}
     {square.elements?.hazards?.map(hazard => <p className="hazard-note" key={hazard._id}>{hazard.description || 'Obstáculo sin descripción'}</p>)}
     <section aria-labelledby="square-photos-title">
       <h3 id="square-photos-title">{photoTitles.all}</h3>

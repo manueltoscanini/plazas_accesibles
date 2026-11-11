@@ -2,6 +2,7 @@ const User = require('../models/User');
 
 // Uso: requireRole('admin') o requireRole('trusted', 'admin')
 // Debe ir DESPUES del middleware auth.
+// Acá verifico si tu rol puede hacer esta acción. Por ejemplo, aprobar un reporte.
 module.exports = function requireRole(...roles) {
   return async (req, res, next) => {
     const user = await User.findById(req.user.id).select('role enabled');

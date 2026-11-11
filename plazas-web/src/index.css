@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+/* Acá dejo los colores y la letra que usa toda la app. */
 :root {
   font-family: 'DM Sans', sans-serif;
   color: #263d35;
@@ -18,6 +19,7 @@ button { cursor: pointer; }
 button:disabled { opacity: .6; cursor: wait; }
 a { color: inherit; }
 button, a, input, select, textarea { outline-offset: 4px; }
+/* Si vas con el teclado, este borde te muestra en qué botón o campo estás. */
 :focus-visible { outline: 3px solid #4c80b1; }
 button { color: inherit; }
 h1, h2, h3, p { margin: 0; }
