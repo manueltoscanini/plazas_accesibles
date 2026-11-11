@@ -1,13 +1,1 @@
-{
-  "name": "plazasaccesibles",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "workspaces": [
-    "plazas-api",
-    "plazas-web"
-  ],
-  "scripts": {
-    "start": "node plazas-api/src/server.js"
-  }
-}
+
