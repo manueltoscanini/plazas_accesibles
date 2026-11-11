@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 // Uso el dialog del navegador para abrir las ventanas. Podés cerrarlas con Escape y el foco queda adentro mientras están abiertas.
 export default function Modal({ children, onClose, className }) {
   const dialog = useRef(null)
-  // Abro la ventana cuando aparece este componente y la cierro cuando deja de mostrarse.
-  useEffect(() => {
+  // Cierro la ventana antes de sacarla para que el navegador pueda devolver el foco al botón que la abrió.
+  useLayoutEffect(() => {
     const element = dialog.current
     element.showModal()
     return () => element.close()

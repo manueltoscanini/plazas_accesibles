@@ -135,16 +135,29 @@ export default function App() {
     refreshSquares()
   }
 
+  const accountButton = <button className="login-button" onClick={() => setModal(token ? 'profile' : 'account')}>
+    {token ? 'Mi perfil' : 'Iniciar sesión'} <span aria-hidden="true">↗</span>
+  </button>
+
+  // Uso los mismos botones en el encabezado ancho y en el menú de pantalla angosta.
+  const managementActions = <>
+    <button className="nav-review" onClick={() => setModal('review')}>Revisar reportes</button>
+    {isAdmin && <button className="nav-review" onClick={() => setModal('create-square')}>Agregar plaza</button>}
+    {accountButton}
+  </>
+
   // Acá está lo que se ve en pantalla. A la derecha pongo la lista o la ficha, según lo que hayas tocado.
   return <>
     <a className="skip-link" href="#plazas" onClick={selectedId ? closeDetail : undefined}>Ir a la lista de plazas</a>
     <header className="site-header" id="inicio">
       <a className="brand" href="#inicio" aria-label="Plazas Accesibles, inicio" onClick={goHome}><span className="brand-icon" aria-hidden="true">♧</span><span>Plazas<strong>Accesibles</strong></span></a>
       <span className="header-place">Paysandú, Uruguay</span>
-      <nav aria-label="Navegación principal"><a className="nav-active" href="#plazas" onClick={selectedId ? closeDetail : undefined}>Explorar plazas</a><button className="nav-about" aria-label="Sobre el proyecto" onClick={() => setModal('about')}><span>Sobre el </span>proyecto</button>
-        {canReview && <button className="nav-review" aria-label="Revisar reportes" onClick={() => setModal('review')}>Revisar<span> reportes</span></button>}
-        {isAdmin && <button className="nav-review" onClick={() => setModal('create-square')}>Agregar plaza</button>}
-        <button className="login-button" onClick={() => setModal(token ? 'profile' : 'account')}>{token ? 'Mi perfil' : 'Iniciar sesión'} <span aria-hidden="true">↗</span></button></nav>
+      <nav aria-label="Navegación principal">
+        <a className="nav-active" href="#plazas" onClick={selectedId ? closeDetail : undefined}>Explorar plazas</a>
+        <button className="nav-about" aria-label="Sobre el proyecto" onClick={() => setModal('about')}><span>Sobre el </span>proyecto</button>
+        {canReview ? <div className="nav-management">{managementActions}</div> : accountButton}
+        {canReview && <button className="login-button nav-menu" aria-haspopup="dialog" onClick={() => setModal('admin-menu')}>Menú</button>}
+      </nav>
     </header>
     <main className="explorer">
       <section className="map-area" aria-label="Mapa de plazas">
@@ -188,7 +201,11 @@ export default function App() {
       </aside>
     </main>
     <footer className="site-footer"><p><span aria-hidden="true">ⓘ</span> Proyecto académico. La información puede incluir datos de demostración.</p><span>Plazas Accesibles · Paysandú</span></footer>
-    {modal && <Modal className={['report', 'review', 'create-square'].includes(modal) ? 'report-dialog' : undefined} onClose={() => setModal(null)}>
+    {modal === 'admin-menu' && canReview && <Modal className="admin-menu-dialog" onClose={() => setModal(null)}>
+      <div className="dialog-heading"><h2 id="modal-title">Administración</h2></div>
+      <div className="admin-menu-actions">{managementActions}</div>
+    </Modal>}
+    {modal && modal !== 'admin-menu' && <Modal className={['report', 'review', 'create-square'].includes(modal) ? 'report-dialog' : undefined} onClose={() => setModal(null)}>
       {['account', 'report-login', 'photo-login'].includes(modal) && <Account
         onLogin={setSession}
         onClose={() => setModal({ 'report-login': 'report', 'photo-login': 'photo' }[modal] ?? null)}
