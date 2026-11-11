@@ -9,5 +9,5 @@
   ],
   "scripts": {
     "start": "node plazas-api/src/server.js"
-  },
+  }
 }
