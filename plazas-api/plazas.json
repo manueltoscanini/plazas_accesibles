@@ -1,0 +1,158 @@
+[
+  {
+    "name": "Plaza Constitución",
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.08083, -32.31710],
+      "lat": -32.31710,
+      "lng": -58.08083,
+      "lon": -58.08083
+    },
+    "elements": ["Bancos", "Juegos infantiles", "Alumbrado", "Monumentos"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Artigas",
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.09512, -32.31604],
+      "lat": -32.31604,
+      "lng": -58.09512,
+      "lon": -58.09512
+    },
+    "elements": ["Bancos", "Monumento a Artigas", "Alumbrado", "Cancha multidisciplinaria"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Acuña de Figueroa",
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.08919, -32.32174],
+      "lat": -32.32174,
+      "lng": -58.08919,
+      "lon": -58.08919
+    },
+    "elements": ["Bancos", "Juegos infantiles", "Espacio verde"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Rivera",
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.07478, -32.31507],
+      "lat": -32.31507,
+      "lng": -58.07478,
+      "lon": -58.07478
+    },
+    "elements": ["Bancos", "Alumbrado", "Juegos de madera"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Colón",
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.10131, -32.31501],
+      "lat": -32.31501,
+      "lng": -58.10131,
+      "lon": -58.10131
+    },
+    "elements": ["Bancos", "Espacio verde", "Luminarias LED"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Bella Vista",
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.07972, -32.31147],
+      "lat": -32.31147,
+      "lng": -58.07972,
+      "lon": -58.07972
+    },
+    "elements": ["Cancha de fútbol", "Juegos de plaza", "Bancos"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza de los Deportes",
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.08197, -32.32466],
+      "lat": -32.32466,
+      "lng": -58.08197,
+      "lon": -58.08197
+    },
+    "elements": ["Pista de atletismo", "Equipamiento aeróbico", "Canchas", "Iluminación"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Falsa 1",
+    "demo": true,
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.0700, -32.3100],
+      "lat": -32.3100,
+      "lng": -58.0700
+    },
+    "elements": ["Elemento de prueba 1"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Falsa 2",
+    "demo": true,
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.0710, -32.3110],
+      "lat": -32.3110,
+      "lng": -58.0710
+    },
+    "elements": ["Elemento de prueba 2"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Falsa 3",
+    "demo": true,
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.0720, -32.3120],
+      "lat": -32.3120,
+      "lng": -58.0720
+    },
+    "elements": ["Elemento de prueba 3"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Falsa 4",
+    "demo": true,
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.0730, -32.3130],
+      "lat": -32.3130,
+      "lng": -58.0730
+    },
+    "elements": ["Elemento de prueba 4"],
+    "pictures": []
+  },
+  {
+    "name": "Plaza Falsa 5",
+    "demo": true,
+    "department": "Paysandú",
+    "location": {
+      "type": "Point",
+      "coordinates": [-58.0740, -32.3140],
+      "lat": -32.3140,
+      "lng": -58.0740
+    },
+    "elements": ["Elemento de prueba 5"],
+    "pictures": []
+  }
+]

@@ -1,0 +1,75 @@
+Modelos
+User:
+* _id: ObjectId
+* firstName: String
+* lastName: String
+* email: String (Unique, Indexed)
+* password: String
+* createdAt: Date
+* enabled: Boolean
+PublicSquare:
+* _id: ObjectId
+* name: String
+* description: String
+* accessibilityDescription: String
+* location: { lat: Double, lon: Double }
+* wc: exists: Boolean
+* playground: exists: Boolean
+* ramps: exists: Boolean
+* paths: { exists: Boolean, accessible: Boolean, description: String }
+* hazards: { exists: Boolean, hazards: [{ description: String, lat: Double, lon: Double, picture: String }] }
+* pictures: [ String ]
+* createdAt: Date
+* updatedAt: Date
+PublicSquareWC:
+* _id: ObjectId
+* publicSquareId: ObjectId (Ref: PublicSquare)
+* description: String
+* picture: String
+* accessible: Boolean
+* lat: Double
+* lon: Double
+PublicSquarePlayground:
+* _id: ObjectId
+* publicSquareId: ObjectId (Ref: PublicSquare)
+* description: String
+* picture: String
+* accessible: Boolean
+* lat: Double
+* lon: Double
+PublicSquareRamp:
+* _id: ObjectId
+* publicSquareId: ObjectId (Ref: PublicSquare)
+* description: String
+* picture: String
+* lat: Double
+* lon: Double
+PublicSquareHazard:
+* _id: ObjectId
+* publicSquareId: ObjectId (Ref: PublicSquare)
+* description: String
+* picture: String
+* lat: Double
+* lon: Double
+Report:
+* _id: ObjectId
+* publicSquareId: ObjectId (Ref: PublicSquare)
+* userId: ObjectId (Ref: User)
+* changes: Object
+* addWC: Object
+* addPlayground: Object
+* addRamp: Object
+* addHazard: Object
+* modifyWC: Object
+* modifyPlayground: Object
+* modifyRamp: Object
+* modifyHazard: Object
+* deleteWC: Object
+* deletePlayground: Object
+* deleteRamp: Object
+* deleteHazard: Object
+* autoApprovedBy: [ObjectId (Ref: User)] // Los reportes pueden ser aprobados automáticamente después de haber sido confirmados por varios usuarios
+* autoRejectedBy: [ObjectId (Ref: User)] // Los que dijeron que no
+* approvedBy: ObjectId (Ref: User) // Aprobado directamente por un administrador/usuario de confianza
+* rejectedBy: ObjectId (Ref: User) // Rechazado directamente por un administrador/usuario de confianza
+

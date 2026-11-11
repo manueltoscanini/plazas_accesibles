@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0" modified="2026-11-05" type="device">
+  <diagram id="diagram_1793913129870702" name="Modelo de dominio">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1820" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kicker" value="LABORATORIO 2 .NET  /  ANÁLISIS DEL DOMINIO" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#285d85;spacing=0;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="2080" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Modelo de dominio · Plazas y accesibilidad" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=34;fontStyle=1;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="72" width="2080" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="intro" value="Los usuarios consultan la accesibilidad de las plazas y proponen actualizaciones mediante reportes. Otros usuarios los confirman o refutan; quienes tienen permisos de revisión pueden aprobarlos o rechazarlos." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=18;fontStyle=0;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="135" width="2080" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="plaza" value="Plaza" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="Plaza">
+          <mxGeometry x="830" y="250" width="500" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="plaza-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;nombre : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;descripción : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;descripciónAccesibilidad : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;ubicación : Coordenada&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;fotografías : Imagen [0..*]&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;últimaActualización : FechaHora&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="plaza">
+          <mxGeometry x="16" y="56" width="468" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="bano" value="Baño" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="Baño">
+          <mxGeometry x="60" y="240" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="bano-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;descripción : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;accesible : Booleano&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;ubicación : Coordenada&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;fotografía : Imagen&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="bano">
+          <mxGeometry x="16" y="56" width="328" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="juegos" value="ZonaDeJuegos" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="ZonaDeJuegos">
+          <mxGeometry x="60" y="530" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="juegos-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;descripción : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;accesible : Booleano&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;ubicación : Coordenada&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;fotografía : Imagen&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="juegos">
+          <mxGeometry x="16" y="56" width="328" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="rampa" value="Rampa" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="Rampa">
+          <mxGeometry x="1680" y="240" width="460" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="rampa-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;descripción : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;ubicación : Coordenada&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;fotografía : Imagen&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="rampa">
+          <mxGeometry x="16" y="56" width="428" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="peligro" value="Peligro" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="Peligro">
+          <mxGeometry x="1680" y="530" width="460" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="peligro-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;descripción : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;ubicación : Coordenada&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;fotografía : Imagen&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="peligro">
+          <mxGeometry x="16" y="56" width="428" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="senderos" value="DescripciónDeSenderos" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="DescripciónDeSenderos">
+          <mxGeometry x="830" y="690" width="500" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="senderos-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;existen : Booleano&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;accesibles : Booleano&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;descripción : Texto&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="senderos">
+          <mxGeometry x="16" y="56" width="468" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="coordenada" value="&amp;laquo;datatype&amp;raquo;&lt;br/&gt;Coordenada" style="swimlane;html=1;startSize=62;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="datatype" domainName="Coordenada">
+          <mxGeometry x="60" y="800" width="360" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="coordenada-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;latitud : Real&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;longitud : Real&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="coordenada">
+          <mxGeometry x="16" y="74" width="328" height="63" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario" value="Usuario" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="Usuario">
+          <mxGeometry x="60" y="1050" width="420" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;nombre : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;apellido : Texto&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;correo : Texto {único}&lt;/div&gt;&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;habilitado : Booleano&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="usuario">
+          <mxGeometry x="16" y="56" width="388" height="266" as="geometry" />
+        </mxCell>
+        <mxCell id="reporte" value="Reporte" style="swimlane;html=1;startSize=44;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="concept" domainName="Reporte">
+          <mxGeometry x="1180" y="1050" width="510" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="reporte-attributes" value="&lt;div style=&quot;line-height:28px;white-space:nowrap;&quot;&gt;propuesta : PropuestaDeCambios&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;spacing=0;overflow=hidden;" vertex="1" parent="reporte">
+          <mxGeometry x="16" y="56" width="478" height="266" as="geometry" />
+        </mxCell>
+        <mxCell id="propuesta" value="&amp;laquo;datatype&amp;raquo;&lt;br/&gt;PropuestaDeCambios" style="swimlane;html=1;startSize=62;horizontal=1;rounded=0;fillColor=#eaf2f8;swimlaneFillColor=#ffffff;strokeColor=#285d85;strokeWidth=1.7;fontColor=#172d42;fontSize=21;fontStyle=1;fontFamily=Helvetica;align=center;spacing=0;collapsible=0;recursiveResize=0;container=1;" vertex="1" parent="1" domainKind="datatype" domainName="PropuestaDeCambios">
+          <mxGeometry x="1740" y="800" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="plaza-banos" value="dispone de" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.4125;entryDx=0;entryDy=0;" edge="1" parent="1" source="plaza" target="bano" domainKind="aggregation" sourceMultiplicity="1" targetMultiplicity="0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="plaza-banos-source-mult" value="1" vertex="1" connectable="0" parent="plaza-banos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-banos-target-mult" value="0..*" vertex="1" connectable="0" parent="plaza-banos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-juegos" value="dispone de" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="plaza" target="juegos" domainKind="aggregation" sourceMultiplicity="1" targetMultiplicity="0..*">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="467.5" />
+              <mxPoint x="620" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-juegos-source-mult" value="1" vertex="1" connectable="0" parent="plaza-juegos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-juegos-target-mult" value="0..*" vertex="1" connectable="0" parent="plaza-juegos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-rampas" value="dispone de" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.47143;entryDx=0;entryDy=0;" edge="1" parent="1" source="plaza" target="rampa" domainKind="aggregation" sourceMultiplicity="1" targetMultiplicity="0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="plaza-rampas-source-mult" value="1" vertex="1" connectable="0" parent="plaza-rampas" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-rampas-target-mult" value="0..*" vertex="1" connectable="0" parent="plaza-rampas" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-peligros" value="presenta" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.57143;entryDx=0;entryDy=0;" edge="1" parent="1" source="plaza" target="peligro" domainKind="association" sourceMultiplicity="1" targetMultiplicity="0..*">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1540" y="467.5" />
+              <mxPoint x="1540" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-peligros-source-mult" value="1" vertex="1" connectable="0" parent="plaza-peligros" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-peligros-target-mult" value="0..*" vertex="1" connectable="0" parent="plaza-peligros" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-senderos" value="tiene información de senderos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="plaza" target="senderos" domainKind="association" sourceMultiplicity="1" targetMultiplicity="0..1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="plaza-senderos-source-mult" value="1" vertex="1" connectable="0" parent="plaza-senderos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-senderos-target-mult" value="0..1" vertex="1" connectable="0" parent="plaza-senderos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-reportes" value="es objeto de" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=0.9;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="plaza" target="reporte" domainKind="association" sourceMultiplicity="1" targetMultiplicity="0..*">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="610" />
+              <mxPoint x="1450" y="610" />
+              <mxPoint x="1450" y="980" />
+              <mxPoint x="1435" y="980" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-reportes-source-mult" value="1" vertex="1" connectable="0" parent="plaza-reportes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plaza-reportes-target-mult" value="0..*" vertex="1" connectable="0" parent="plaza-reportes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="autoria" value="crea" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=1;exitY=0.18181818181818182;exitDx=0;exitDy=0;entryX=0;entryY=0.18181818181818182;entryDx=0;entryDy=0;" edge="1" parent="1" source="usuario" target="reporte" domainKind="association" sourceMultiplicity="autor 1" targetMultiplicity="reportes 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="autoria-source-mult" value="autor 1" vertex="1" connectable="0" parent="autoria" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="autoria-target-mult" value="reportes 0..*" vertex="1" connectable="0" parent="autoria" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="confirmacion" value="confirma" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=1;exitY=0.3484848484848485;exitDx=0;exitDy=0;entryX=0;entryY=0.3484848484848485;entryDx=0;entryDy=0;" edge="1" parent="1" source="usuario" target="reporte" domainKind="association" sourceMultiplicity="confirmadores 0..*" targetMultiplicity="confirmados 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="confirmacion-source-mult" value="confirmadores 0..*" vertex="1" connectable="0" parent="confirmacion" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="confirmacion-target-mult" value="confirmados 0..*" vertex="1" connectable="0" parent="confirmacion" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="refutacion" value="refuta" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5151515151515151;exitDx=0;exitDy=0;entryX=0;entryY=0.5151515151515151;entryDx=0;entryDy=0;" edge="1" parent="1" source="usuario" target="reporte" domainKind="association" sourceMultiplicity="refutadores 0..*" targetMultiplicity="refutados 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="refutacion-source-mult" value="refutadores 0..*" vertex="1" connectable="0" parent="refutacion" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="refutacion-target-mult" value="refutados 0..*" vertex="1" connectable="0" parent="refutacion" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aprobacion" value="aprueba directamente" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=1;exitY=0.6818181818181818;exitDx=0;exitDy=0;entryX=0;entryY=0.6818181818181818;entryDx=0;entryDy=0;" edge="1" parent="1" source="usuario" target="reporte" domainKind="association" sourceMultiplicity="aprobador 0..1" targetMultiplicity="aprobados 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aprobacion-source-mult" value="aprobador 0..1" vertex="1" connectable="0" parent="aprobacion" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aprobacion-target-mult" value="aprobados 0..*" vertex="1" connectable="0" parent="aprobacion" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rechazo" value="rechaza directamente" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;startFill=0;endArrow=none;startSize=20;strokeColor=#285d85;strokeWidth=1.7;fontFamily=Helvetica;fontSize=17;fontColor=#172d42;labelBackgroundColor=#ffffff;exitX=1;exitY=0.8484848484848485;exitDx=0;exitDy=0;entryX=0;entryY=0.8484848484848485;entryDx=0;entryDy=0;" edge="1" parent="1" source="usuario" target="reporte" domainKind="association" sourceMultiplicity="revisor 0..1" targetMultiplicity="rechazados 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rechazo-source-mult" value="revisor 0..1" vertex="1" connectable="0" parent="rechazo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="-0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rechazo-target-mult" value="rechazados 0..*" vertex="1" connectable="0" parent="rechazo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Helvetica;fontSize=15;fontColor=#172d42;labelBackgroundColor=#ffffff;">
+          <mxGeometry x="0.8" y="20" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="type-guide" value="&lt;b&gt;Tipos y lectura del modelo&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Coordenada&lt;/b&gt; es un valor de latitud y longitud; se usa para ubicar plazas y elementos.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;PropuestaDeCambios&lt;/b&gt; describe actualizaciones de la plaza y altas, modificaciones o bajas de sus elementos. Su estructura está pendiente de especificar.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Imagen&lt;/b&gt; representa el valor de una fotografía.&lt;br/&gt;&lt;br/&gt;Los nombres junto a las multiplicidades indican los roles de los extremos." style="rounded=0;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fillColor=#f4f7fa;strokeColor=#d5e0e9;spacing=16;fontFamily=Helvetica;fontSize=16;fontColor=#172d42;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="925" width="400" height="455" as="geometry" />
+        </mxCell>
+        <mxCell id="intro-senderos" value="&lt;b&gt;Descripción de un conjunto&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;DescripciónDeSenderos resume los senderos de una plaza. El documento no describe caminos individuales." style="rounded=0;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fillColor=#f4f7fa;strokeColor=#d5e0e9;spacing=16;fontFamily=Helvetica;fontSize=16;fontColor=#172d42;" vertex="1" parent="1">
+          <mxGeometry x="470" y="755" width="300" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Notación de la presentación&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Rectángulo:&lt;/b&gt; concepto con atributos.&lt;br/&gt;&lt;b&gt;«datatype»:&lt;/b&gt; tipo de valor, sin identidad propia.&lt;br/&gt;&lt;b&gt;Rombo vacío en Plaza:&lt;/b&gt; agregación compartida.&lt;br/&gt;&lt;b&gt;1 / 0..1 / 0..*:&lt;/b&gt; exactamente uno / opcional / varios.&lt;br/&gt;&lt;br/&gt;La multiplicidad en un extremo cuenta instancias de ese extremo por cada instancia del extremo opuesto." style="rounded=0;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fillColor=#f4f7fa;strokeColor=#d5e0e9;spacing=16;fontFamily=Helvetica;fontSize=16;fontColor=#172d42;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1450" width="640" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="constraints" value="&lt;b&gt;Restricciones respaldadas por el documento&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;R1.&lt;/b&gt; El correo es único entre usuarios.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;R2.&lt;/b&gt; La aprobación o el rechazo directo lo realiza un usuario de confianza o administrador; son roles de Usuario.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;R3.&lt;/b&gt; Confirmar y refutar son relaciones distintas de la decisión directa. La aprobación automática depende de confirmaciones; no se especifica el umbral." style="rounded=0;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fillColor=#f4f7fa;strokeColor=#d5e0e9;spacing=16;fontFamily=Helvetica;fontSize=16;fontColor=#172d42;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1450" width="670" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="assumptions" value="&lt;b&gt;Decisiones y puntos pendientes&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Decisiones:&lt;/b&gt; cada elemento pertenece a una plaza; cada reporte tiene un autor y trata una plaza. Una decisión directa puede estar ausente.&lt;br/&gt;&lt;br/&gt;Los peligros se representan con un solo concepto. La duplicación del documento es una cuestión de almacenamiento.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Pendiente:&lt;/b&gt; exclusión de votos o decisiones, coherencia de indicadores de existencia y estructura de la propuesta. No se presupone borrado en cascada." style="rounded=0;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fillColor=#f4f7fa;strokeColor=#d5e0e9;spacing=16;fontFamily=Helvetica;fontSize=16;fontColor=#172d42;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="1450" width="710" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="sources" value="Fuentes: Documento modelos · Programación 4: Análisis — Modelado del Dominio (atributos, roles, multiplicidades y agregación; diapositiva 37) · 05/11/2026" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#52677b;spacing=0;overflow=hidden;" vertex="1" parent="1" link="https://docs.google.com/presentation/d/1Acru56Sumv7mjbZv2AY98f3H0_-4BwZI/edit?slide=id.p37#slide=id.p37">
+          <mxGeometry x="60" y="1750" width="2080" height="28" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
