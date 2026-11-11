@@ -6,5 +6,8 @@
   "workspaces": [
     "plazas-api",
     "plazas-web"
-  ]
+  ],
+  "scripts": {
+    "start": "node plazas-api/src/server.js"
+  },
 }
