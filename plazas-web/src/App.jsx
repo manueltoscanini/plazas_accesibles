@@ -185,7 +185,7 @@ export default function App() {
         <dl className="project-credits">
           <div><dt>Idea original · RPL 2026</dt><dd>Juan Pablo Iturbide, Renzo Scarabinni y Maximiliano Rodríguez</dd></div>
           <div><dt>Desarrollo · Taller de Sistemas de Información .NET</dt><dd>Manuel R. Toscanini y Juan Elola</dd></div>
-          <div><dt>Carrera</dt><dd>Tecnólogo en Informática · UTEC y Udelar · Paysandú</dd></div>
+          <div><dt>Carrera</dt><dd>Tecnólogo en Informática · UTEC, Udelar y UTU · Paysandú</dd></div>
         </dl>
       </div>}
     </Modal>}
