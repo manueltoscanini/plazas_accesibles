@@ -24,6 +24,7 @@ export default function SquareDetail({ square, signedIn, onReport, onAddPhoto })
   return <div className="detail-content">
     <p className="place-label">Paysandú, Uruguay</p>
     <h2>{square.name}</h2>
+    <p className="updated">Última actualización · {Number.isNaN(updatedAt) ? 'Sin fecha registrada' : <time dateTime={square.updatedAt}>{new Date(updatedAt).toLocaleDateString('es-UY')}</time>}</p>
     {square.description && <p className="square-description">{square.description}</p>}
     <h3>Para planear tu visita</h3>
     <dl className="conditions">
@@ -47,7 +48,6 @@ export default function SquareDetail({ square, signedIn, onReport, onAddPhoto })
       <PhotoGallery photos={photos.all} label={square.name} captions={captions} onOpen={index => setGallery({ category: 'all', index })} />
       <button className="secondary gallery-add" onClick={() => onAddPhoto('all')}>Agregar una foto</button>
     </section>
-    <p className="updated">Última actualización · {Number.isNaN(updatedAt) ? 'Sin fecha registrada' : new Date(updatedAt).toLocaleDateString('es-UY')}</p>
     <button className="primary full" onClick={onReport}>Reportar un hallazgo <span aria-hidden="true">↗</span></button>
     {!signedIn && <p className="report-hint">Iniciá sesión para aportar información.</p>}
     {gallery && <Modal className="photo-dialog" onClose={() => setGallery(null)}>

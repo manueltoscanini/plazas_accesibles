@@ -65,7 +65,7 @@
 .visit-panel { display: flex; flex-direction: column; min-width: 0; min-height: 0; border-left: 1px solid var(--line); }
 .visit-panel:focus-visible { outline-offset: -3px; }
 .detail-panel { min-height: 0; overflow-y: auto; }
-.detail-toolbar { position: sticky; top: 0; z-index: 1; background: #fff; padding: 10px 22px; border-bottom: 1px solid var(--line); }
+.detail-toolbar { position: sticky; top: 0; z-index: 2; background: #fff; padding: 10px 22px; border-bottom: 1px solid var(--line); }
 .detail-toolbar button { font-size: 12px; min-height: 40px; }
 /* Acá doy forma a las fotos y a la lista de revisión. Cuando ampliás una foto, se muestra entera. */
 .photo-frame { border-radius: 7px; overflow: hidden; background: #f5f7f1; }
@@ -107,7 +107,8 @@
 .accessibility-note h3 { margin: 0 0 7px; }
 .accessibility-note p, .hazard-note { font-size: 11px; line-height: 1.7; color: #5f6e60; }
 .hazard-note { background: #fbf3ec; padding: 10px; margin-top: 8px; }
-.updated { font-size: 10px; color: var(--muted); margin: 25px 0 16px; }
+.updated { position: sticky; top: 61px; z-index: 1; font-size: 13px; font-weight: 600; color: var(--green); background: #e9f0e5; border: 1px solid #d9e5d3; border-radius: 6px; padding: 8px 12px; margin: 0 0 18px; box-shadow: 0 -6px 0 6px #fff, 0 4px 10px #ffffffd9; }
+.detail-content > .primary { margin-top: 24px; }
 .report-hint { color: var(--muted); font-size: 10px; text-align: center; margin-top: 10px; }
 .empty-state { padding: 24px 14px; color: var(--muted); font-size: 12px; line-height: 1.7; }
 .empty-state h2 { font-size: 16px; color: #364d3e; margin-bottom: 10px; }
