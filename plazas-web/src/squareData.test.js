@@ -1,5 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { getSquarePhotos } from './photos.js'
 import { isInvalidText, normalizeSquare } from './squareData.js'
 
 test('descarta datos que no corresponden como robot malvado o plazas falsas', () => {
@@ -63,4 +64,15 @@ test('completa datos de prueba con casos sin registrar, sin existentes y existen
   assert.equal(deportes.ramps.exists, undefined)
   assert.equal(deportes.wc.exists, true)
   assert.equal(deportes.wc.accessible, false)
+
+  const artigasPhotos = getSquarePhotos(normalizeSquare({
+    _id: '7',
+    name: 'Plaza Artigas',
+    location: { lat: -32.31604, lon: -58.09512 },
+  }))
+  assert.equal(artigasPhotos.ramps.length, 1)
+  assert.equal(artigasPhotos.wcs.length, 1)
+  assert.equal(artigasPhotos.accessibleWcs.length, 1)
+  assert.equal(artigasPhotos.playgrounds.length, 1)
+  assert.equal(artigasPhotos.paths.length, 1)
 })

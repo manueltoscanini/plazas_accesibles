@@ -1,5 +1,23 @@
-// Datos de prueba realistas para las plazas de Paysandú y filtro de textos de prueba inválidos.
+// Datos de prueba realistas para las plazas de Paysandú con fotos de Pexels y filtro de textos inválidos.
 const INVALID_TEXT = /robot\s*malvado|plaza\s*falsa|elemento\s*de\s*prueba/i
+
+const PEXELS = {
+  ramp1: 'https://images.pexels.com/photos/9808741/pexels-photo-9808741.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  ramp2: 'https://images.pexels.com/photos/29608838/pexels-photo-29608838.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  ramp3: 'https://images.pexels.com/photos/8415672/pexels-photo-8415672.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  ramp4: 'https://images.pexels.com/photos/8415737/pexels-photo-8415737.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  path1: 'https://images.pexels.com/photos/9192661/pexels-photo-9192661.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  path2: 'https://images.pexels.com/photos/18561081/pexels-photo-18561081.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  path3: 'https://images.pexels.com/photos/7956384/pexels-photo-7956384.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  path4: 'https://images.pexels.com/photos/10255850/pexels-photo-10255850.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  wc1: 'https://images.pexels.com/photos/4239131/pexels-photo-4239131.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  wc2: 'https://images.pexels.com/photos/16501253/pexels-photo-16501253.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  play1: 'https://images.pexels.com/photos/5591632/pexels-photo-5591632.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  play2: 'https://images.pexels.com/photos/5826495/pexels-photo-5826495.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  play3: 'https://images.pexels.com/photos/317262/pexels-photo-317262.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  play4: 'https://images.pexels.com/photos/28147598/pexels-photo-28147598.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  play5: 'https://images.pexels.com/photos/30740924/pexels-photo-30740924.jpeg?auto=compress&cs=tinysrgb&w=1200',
+}
 
 const SEED_SQUARES = {
   'Plaza Constitución': {
@@ -10,14 +28,15 @@ const SEED_SQUARES = {
       exists: true,
       accessible: true,
       description: 'Caminos amplios de baldosa firme y nivelada en todo el perímetro y diagonales',
+      pictures: [PEXELS.path1],
     },
     wc: { exists: false, accessible: false },
     playground: { exists: false },
     hazards: { exists: false },
     elements: {
       ramps: [
-        { _id: 'seed-const-ramp-1', description: 'Rampa de hormigón con baranda en esquina 18 de Julio y Monte Caseros', lat: -32.31702, lon: -58.08095 },
-        { _id: 'seed-const-ramp-2', description: 'Rampa de acceso peatonal sobre calle Zorrilla de San Martín', lat: -32.31722, lon: -58.08071 },
+        { _id: 'seed-const-ramp-1', description: 'Rampa de hormigón con baranda en esquina 18 de Julio y Monte Caseros', picture: PEXELS.ramp1, lat: -32.31702, lon: -58.08095 },
+        { _id: 'seed-const-ramp-2', description: 'Rampa de acceso peatonal sobre calle Zorrilla de San Martín', picture: PEXELS.ramp2, lat: -32.31722, lon: -58.08071 },
       ],
       wcs: [],
       playgrounds: [],
@@ -32,19 +51,20 @@ const SEED_SQUARES = {
       exists: true,
       accessible: true,
       description: 'Senderos internos amplios de hormigón con pendiente suave',
+      pictures: [PEXELS.path2],
     },
     wc: { exists: true, accessible: true },
     playground: { exists: true },
     hazards: { exists: true },
     elements: {
       ramps: [
-        { _id: 'seed-art-ramp-1', description: 'Rampa ancha de acceso hacia la explanada central', lat: -32.31595, lon: -58.09525 },
+        { _id: 'seed-art-ramp-1', description: 'Rampa ancha de acceso hacia la explanada central', picture: PEXELS.ramp3, lat: -32.31595, lon: -58.09525 },
       ],
       wcs: [
-        { _id: 'seed-art-wc-1', description: 'Baño público con puerta ancha, barras de apoyo y rampa de ingreso', accessible: true, lat: -32.31615, lon: -58.09501 },
+        { _id: 'seed-art-wc-1', description: 'Baño público con puerta ancha, barras de apoyo y rampa de ingreso', picture: PEXELS.wc1, accessible: true, lat: -32.31615, lon: -58.09501 },
       ],
       playgrounds: [
-        { _id: 'seed-art-play-1', description: 'Sector de juegos infantiles con piso de caucho y hamaca integradora', accessible: true, lat: -32.31588, lon: -58.09498 },
+        { _id: 'seed-art-play-1', description: 'Sector de juegos infantiles con piso de caucho y hamaca integradora', picture: PEXELS.play1, accessible: true, lat: -32.31588, lon: -58.09498 },
       ],
       hazards: [
         { _id: 'seed-art-haz-1', description: 'Baldosa levantada por raíces junto al cantero del sector norte', lat: -32.31582, lon: -58.09518 },
@@ -61,11 +81,11 @@ const SEED_SQUARES = {
     hazards: { exists: false },
     elements: {
       ramps: [
-        { _id: 'seed-acuna-ramp-1', description: 'Rampa en esquina con rebaje de cordón señalizado', lat: -32.32165, lon: -58.08928 },
+        { _id: 'seed-acuna-ramp-1', description: 'Rampa en esquina con rebaje de cordón señalizado', picture: PEXELS.ramp4, lat: -32.32165, lon: -58.08928 },
       ],
       wcs: [],
       playgrounds: [
-        { _id: 'seed-acuna-play-1', description: 'Área de juegos infantiles con acceso a nivel desde el sendero principal', accessible: true, lat: -32.32181, lon: -58.08910 },
+        { _id: 'seed-acuna-play-1', description: 'Área de juegos infantiles con acceso a nivel desde el sendero principal', picture: PEXELS.play2, accessible: true, lat: -32.32181, lon: -58.08910 },
       ],
       hazards: [],
     },
@@ -82,7 +102,7 @@ const SEED_SQUARES = {
       ramps: [],
       wcs: [],
       playgrounds: [
-        { _id: 'seed-riv-play-1', description: 'Juegos de madera sobre superficie de arena y césped', accessible: false, lat: -32.31501, lon: -58.07470 },
+        { _id: 'seed-riv-play-1', description: 'Juegos de madera sobre superficie de arena y césped', picture: PEXELS.play3, accessible: false, lat: -32.31501, lon: -58.07470 },
       ],
       hazards: [
         { _id: 'seed-riv-haz-1', description: 'Escalón pronunciado sin rampa alternativa en el ingreso este', lat: -32.31514, lon: -58.07486 },
@@ -97,6 +117,7 @@ const SEED_SQUARES = {
       exists: true,
       accessible: true,
       description: 'Veredas perimetrales y diagonales niveladas con buena iluminación',
+      pictures: [PEXELS.path3],
     },
     wc: { exists: false, accessible: false },
     playground: {},
@@ -120,7 +141,7 @@ const SEED_SQUARES = {
       ramps: [],
       wcs: [],
       playgrounds: [
-        { _id: 'seed-bv-play-1', description: 'Sector de juegos de plaza junto a la cancha', accessible: false, lat: -32.31140, lon: -58.07965 },
+        { _id: 'seed-bv-play-1', description: 'Sector de juegos de plaza junto a la cancha', picture: PEXELS.play4, accessible: false, lat: -32.31140, lon: -58.07965 },
       ],
       hazards: [],
     },
@@ -133,6 +154,7 @@ const SEED_SQUARES = {
       exists: true,
       accessible: true,
       description: 'Circuito interno pavimentado y continuo alrededor de las canchas',
+      pictures: [PEXELS.path4],
     },
     wc: { exists: true, accessible: false },
     playground: { exists: true },
@@ -140,10 +162,10 @@ const SEED_SQUARES = {
     elements: {
       ramps: [],
       wcs: [
-        { _id: 'seed-dep-wc-1', description: 'Baños en sector de vestuarios con puerta angosta', accessible: false, lat: -32.32472, lon: -58.08190 },
+        { _id: 'seed-dep-wc-1', description: 'Baños en sector de vestuarios con puerta angosta', picture: PEXELS.wc2, accessible: false, lat: -32.32472, lon: -58.08190 },
       ],
       playgrounds: [
-        { _id: 'seed-dep-play-1', description: 'Zona de juegos y estaciones saludables al aire libre', accessible: true, lat: -32.32460, lon: -58.08188 },
+        { _id: 'seed-dep-play-1', description: 'Zona de juegos y estaciones saludables al aire libre', picture: PEXELS.play5, accessible: true, lat: -32.32460, lon: -58.08188 },
       ],
       hazards: [],
     },
@@ -161,11 +183,16 @@ function cleanText(text, fallback = '') {
 
 function mergeElements(rawList, seedList = []) {
   const valid = (Array.isArray(rawList) ? rawList : []).filter(item => !isInvalidText(item?.description))
-  if (valid.length > 0) return valid
+  if (valid.length > 0) {
+    return valid.map((item, i) => ({
+      ...item,
+      picture: item.picture || seedList[i]?.picture || seedList[0]?.picture || '',
+    }))
+  }
   return seedList
 }
 
-// Limpia registros de prueba que no corresponden (como «robot malvado») y completa datos de prueba en las plazas de Paysandú.
+// Limpia registros de prueba que no corresponden (como «robot malvado») y completa datos y fotos de prueba en las plazas de Paysandú.
 export function normalizeSquare(square) {
   if (!square || square.demo || isInvalidText(square.name)) return null
   const seed = SEED_SQUARES[square.name]
@@ -195,12 +222,19 @@ export function normalizeSquare(square) {
     hazards: seed.hazards?.exists ? mergeElements(rawElements?.hazards, seed.elements.hazards) : [],
   }
 
+  const paths = {
+    ...seed.paths,
+    ...(seed.paths?.pictures && {
+      pictures: [...new Set([...(square.paths?.pictures ?? []), ...seed.paths.pictures])],
+    }),
+  }
+
   return {
     ...square,
     description: cleanText(square.description, seed.description),
     accessibilityDescription: cleanText(square.accessibilityDescription, seed.accessibilityDescription),
     ramps: { ...seed.ramps },
-    paths: { ...seed.paths },
+    paths,
     wc: { ...seed.wc },
     playground: { ...seed.playground },
     hazards: { ...seed.hazards },

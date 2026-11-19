@@ -74,10 +74,12 @@ async function syncSeedData() {
       $set['paths.exists'] = item.paths.exists;
       $set['paths.accessible'] = Boolean(item.paths.accessible);
       $set['paths.description'] = item.paths.description || '';
+      $set['paths.pictures'] = item.paths.pictures || [];
     } else {
       $unset['paths.exists'] = '';
       $set['paths.accessible'] = false;
       $set['paths.description'] = '';
+      $set['paths.pictures'] = [];
     }
 
     const square = await Square.findOneAndUpdate(
@@ -86,21 +88,16 @@ async function syncSeedData() {
       { new: true, upsert: true, runValidators: true }
     );
 
-    // Sincronizo los elementos de la plaza con los datos de prueba limpios de plazas.json.
+    // Sincronizo los elementos de la plaza con los datos y fotos de prueba de plazas.json.
     for (const [key, Model] of Object.entries(ELEMENT_MODELS)) {
       const docs = (item.elements?.[key] || []).map(el => ({
         ...el,
         publicSquareId: square._id,
       }));
-      if (!docs.length) {
-        await Model.deleteMany({ publicSquareId: square._id });
-        continue;
+      await Model.deleteMany({ publicSquareId: square._id });
+      if (docs.length) {
+        await Model.insertMany(docs);
       }
-      await Model.deleteMany({
-        publicSquareId: square._id,
-        $or: [{ picture: '' }, { picture: { $exists: false } }, { description: INVALID_TEXT }],
-      });
-      await Model.insertMany(docs);
     }
 
     console.log(`Plaza actualizada: ${square.name}`);

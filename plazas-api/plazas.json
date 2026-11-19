@@ -11,7 +11,10 @@
     "paths": {
       "exists": true,
       "accessible": true,
-      "description": "Caminos amplios de baldosa firme y nivelada en todo el perímetro y diagonales"
+      "description": "Caminos amplios de baldosa firme y nivelada en todo el perímetro y diagonales",
+      "pictures": [
+        "https://images.pexels.com/photos/9192661/pexels-photo-9192661.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      ]
     },
     "wc": { "exists": false, "accessible": false },
     "playground": { "exists": false },
@@ -20,11 +23,13 @@
       "ramps": [
         {
           "description": "Rampa de hormigón con baranda en esquina 18 de Julio y Monte Caseros",
+          "picture": "https://images.pexels.com/photos/9808741/pexels-photo-9808741.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "lat": -32.31702,
           "lon": -58.08095
         },
         {
           "description": "Rampa de acceso peatonal sobre calle Zorrilla de San Martín",
+          "picture": "https://images.pexels.com/photos/29608838/pexels-photo-29608838.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "lat": -32.31722,
           "lon": -58.08071
         }
@@ -46,7 +51,10 @@
     "paths": {
       "exists": true,
       "accessible": true,
-      "description": "Senderos internos amplios de hormigón con pendiente suave"
+      "description": "Senderos internos amplios de hormigón con pendiente suave",
+      "pictures": [
+        "https://images.pexels.com/photos/18561081/pexels-photo-18561081.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      ]
     },
     "wc": { "exists": true, "accessible": true },
     "playground": { "exists": true },
@@ -55,6 +63,7 @@
       "ramps": [
         {
           "description": "Rampa ancha de acceso hacia la explanada central",
+          "picture": "https://images.pexels.com/photos/8415672/pexels-photo-8415672.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "lat": -32.31595,
           "lon": -58.09525
         }
@@ -62,6 +71,7 @@
       "wcs": [
         {
           "description": "Baño público con puerta ancha, barras de apoyo y rampa de ingreso",
+          "picture": "https://images.pexels.com/photos/4239131/pexels-photo-4239131.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "accessible": true,
           "lat": -32.31615,
           "lon": -58.09501
@@ -70,6 +80,7 @@
       "playgrounds": [
         {
           "description": "Sector de juegos infantiles con piso de caucho y hamaca integradora",
+          "picture": "https://images.pexels.com/photos/5591632/pexels-photo-5591632.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "accessible": true,
           "lat": -32.31588,
           "lon": -58.09498
@@ -99,6 +110,7 @@
       "ramps": [
         {
           "description": "Rampa en esquina con rebaje de cordón señalizado",
+          "picture": "https://images.pexels.com/photos/8415737/pexels-photo-8415737.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "lat": -32.32165,
           "lon": -58.08928
         }
@@ -107,6 +119,7 @@
       "playgrounds": [
         {
           "description": "Área de juegos infantiles con acceso a nivel desde el sendero principal",
+          "picture": "https://images.pexels.com/photos/5826495/pexels-photo-5826495.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "accessible": true,
           "lat": -32.32181,
           "lon": -58.08910
@@ -133,6 +146,7 @@
       "playgrounds": [
         {
           "description": "Juegos de madera sobre superficie de arena y césped",
+          "picture": "https://images.pexels.com/photos/317262/pexels-photo-317262.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "accessible": false,
           "lat": -32.31501,
           "lon": -58.07470
@@ -158,7 +172,10 @@
     "paths": {
       "exists": true,
       "accessible": true,
-      "description": "Veredas perimetrales y diagonales niveladas con buena iluminación"
+      "description": "Veredas perimetrales y diagonales niveladas con buena iluminación",
+      "pictures": [
+        "https://images.pexels.com/photos/7956384/pexels-photo-7956384.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      ]
     },
     "wc": { "exists": false, "accessible": false },
     "elements": {
@@ -184,6 +201,7 @@
       "playgrounds": [
         {
           "description": "Sector de juegos de plaza junto a la cancha",
+          "picture": "https://images.pexels.com/photos/28147598/pexels-photo-28147598.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "accessible": false,
           "lat": -32.31140,
           "lon": -58.07965
@@ -203,7 +221,10 @@
     "paths": {
       "exists": true,
       "accessible": true,
-      "description": "Circuito interno pavimentado y continuo alrededor de las canchas"
+      "description": "Circuito interno pavimentado y continuo alrededor de las canchas",
+      "pictures": [
+        "https://images.pexels.com/photos/10255850/pexels-photo-10255850.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      ]
     },
     "wc": { "exists": true, "accessible": false },
     "playground": { "exists": true },
@@ -212,6 +233,7 @@
       "wcs": [
         {
           "description": "Baños en sector de vestuarios con puerta angosta",
+          "picture": "https://images.pexels.com/photos/16501253/pexels-photo-16501253.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "accessible": false,
           "lat": -32.32472,
           "lon": -58.08190
@@ -220,6 +242,7 @@
       "playgrounds": [
         {
           "description": "Zona de juegos y estaciones saludables al aire libre",
+          "picture": "https://images.pexels.com/photos/30740924/pexels-photo-30740924.jpeg?auto=compress&cs=tinysrgb&w=1200",
           "accessible": true,
           "lat": -32.32460,
           "lon": -58.08188
