@@ -1,158 +1,231 @@
 [
   {
     "name": "Plaza Constitución",
-    "department": "Paysandú",
+    "description": "Plaza principal en el centro de Paysandú, frente a la Basílica Nuestra Señora del Rosario y San Benito de Palermo.",
+    "accessibilityDescription": "Cuenta con rampas en las esquinas sobre 18 de Julio y Monte Caseros, veredas amplias de baldosas parejas y bancos con espacio lateral para silla de ruedas.",
     "location": {
-      "type": "Point",
-      "coordinates": [-58.08083, -32.31710],
       "lat": -32.31710,
-      "lng": -58.08083,
       "lon": -58.08083
     },
-    "elements": ["Bancos", "Juegos infantiles", "Alumbrado", "Monumentos"],
-    "pictures": []
+    "ramps": { "exists": true },
+    "paths": {
+      "exists": true,
+      "accessible": true,
+      "description": "Caminos amplios de baldosa firme y nivelada en todo el perímetro y diagonales"
+    },
+    "wc": { "exists": false, "accessible": false },
+    "playground": { "exists": false },
+    "hazards": { "exists": false },
+    "elements": {
+      "ramps": [
+        {
+          "description": "Rampa de hormigón con baranda en esquina 18 de Julio y Monte Caseros",
+          "lat": -32.31702,
+          "lon": -58.08095
+        },
+        {
+          "description": "Rampa de acceso peatonal sobre calle Zorrilla de San Martín",
+          "lat": -32.31722,
+          "lon": -58.08071
+        }
+      ],
+      "wcs": [],
+      "playgrounds": [],
+      "hazards": []
+    }
   },
   {
     "name": "Plaza Artigas",
-    "department": "Paysandú",
+    "description": "Amplio espacio público con el monumento ecuestre a José Gervasio Artigas, explanada central y zonas arboladas.",
+    "accessibilityDescription": "Accesos con rampa en las esquinas principales, baños públicos con gabinete accesible y caminos internos firmes. Precaución por desnivel menor en sector norte.",
     "location": {
-      "type": "Point",
-      "coordinates": [-58.09512, -32.31604],
       "lat": -32.31604,
-      "lng": -58.09512,
       "lon": -58.09512
     },
-    "elements": ["Bancos", "Monumento a Artigas", "Alumbrado", "Cancha multidisciplinaria"],
-    "pictures": []
+    "ramps": { "exists": true },
+    "paths": {
+      "exists": true,
+      "accessible": true,
+      "description": "Senderos internos amplios de hormigón con pendiente suave"
+    },
+    "wc": { "exists": true, "accessible": true },
+    "playground": { "exists": true },
+    "hazards": { "exists": true },
+    "elements": {
+      "ramps": [
+        {
+          "description": "Rampa ancha de acceso hacia la explanada central",
+          "lat": -32.31595,
+          "lon": -58.09525
+        }
+      ],
+      "wcs": [
+        {
+          "description": "Baño público con puerta ancha, barras de apoyo y rampa de ingreso",
+          "accessible": true,
+          "lat": -32.31615,
+          "lon": -58.09501
+        }
+      ],
+      "playgrounds": [
+        {
+          "description": "Sector de juegos infantiles con piso de caucho y hamaca integradora",
+          "accessible": true,
+          "lat": -32.31588,
+          "lon": -58.09498
+        }
+      ],
+      "hazards": [
+        {
+          "description": "Baldosa levantada por raíces junto al cantero del sector norte",
+          "lat": -32.31582,
+          "lon": -58.09518
+        }
+      ]
+    }
   },
   {
     "name": "Plaza Acuña de Figueroa",
-    "department": "Paysandú",
+    "description": "Plaza barrial arbolada con sector de juegos infantiles, bancos y senderos peatonales.",
+    "accessibilityDescription": "Presenta rampas en los accesos principales y juegos infantiles renovados. Falta relevar el estado de los caminos internos y baños.",
     "location": {
-      "type": "Point",
-      "coordinates": [-58.08919, -32.32174],
       "lat": -32.32174,
-      "lng": -58.08919,
       "lon": -58.08919
     },
-    "elements": ["Bancos", "Juegos infantiles", "Espacio verde"],
-    "pictures": []
+    "ramps": { "exists": true },
+    "playground": { "exists": true },
+    "hazards": { "exists": false },
+    "elements": {
+      "ramps": [
+        {
+          "description": "Rampa en esquina con rebaje de cordón señalizado",
+          "lat": -32.32165,
+          "lon": -58.08928
+        }
+      ],
+      "wcs": [],
+      "playgrounds": [
+        {
+          "description": "Área de juegos infantiles con acceso a nivel desde el sendero principal",
+          "accessible": true,
+          "lat": -32.32181,
+          "lon": -58.08910
+        }
+      ],
+      "hazards": []
+    }
   },
   {
     "name": "Plaza Rivera",
-    "department": "Paysandú",
+    "description": "Espacio verde tradicional con arbolado añoso, bancos de descanso y juegos de madera.",
+    "accessibilityDescription": "No cuenta con rampas en los accesos ni caminos internos accesibles. Falta relevar información sobre baños.",
     "location": {
-      "type": "Point",
-      "coordinates": [-58.07478, -32.31507],
       "lat": -32.31507,
-      "lng": -58.07478,
       "lon": -58.07478
     },
-    "elements": ["Bancos", "Alumbrado", "Juegos de madera"],
-    "pictures": []
+    "ramps": { "exists": false },
+    "paths": { "exists": false },
+    "playground": { "exists": true },
+    "hazards": { "exists": true },
+    "elements": {
+      "ramps": [],
+      "wcs": [],
+      "playgrounds": [
+        {
+          "description": "Juegos de madera sobre superficie de arena y césped",
+          "accessible": false,
+          "lat": -32.31501,
+          "lon": -58.07470
+        }
+      ],
+      "hazards": [
+        {
+          "description": "Escalón pronunciado sin rampa alternativa en el ingreso este",
+          "lat": -32.31514,
+          "lon": -58.07486
+        }
+      ]
+    }
   },
   {
     "name": "Plaza Colón",
-    "department": "Paysandú",
+    "description": "Plaza cercana a la zona costera con espacios verdes, bancos e iluminación LED.",
+    "accessibilityDescription": "Circulación perimetral despejada y sin baños en el predio. El relevamiento de rampas, juegos y obstáculos aún está en curso.",
     "location": {
-      "type": "Point",
-      "coordinates": [-58.10131, -32.31501],
       "lat": -32.31501,
-      "lng": -58.10131,
       "lon": -58.10131
     },
-    "elements": ["Bancos", "Espacio verde", "Luminarias LED"],
-    "pictures": []
+    "paths": {
+      "exists": true,
+      "accessible": true,
+      "description": "Veredas perimetrales y diagonales niveladas con buena iluminación"
+    },
+    "wc": { "exists": false, "accessible": false },
+    "elements": {
+      "ramps": [],
+      "wcs": [],
+      "playgrounds": [],
+      "hazards": []
+    }
   },
   {
     "name": "Plaza Bella Vista",
-    "department": "Paysandú",
+    "description": "Espacio recreativo barrial con cancha deportiva, juegos infantiles y áreas de descanso.",
+    "accessibilityDescription": "Cuenta con zona de juegos y espacios abiertos; falta completar el relevamiento de rampas, caminos internos y baños.",
     "location": {
-      "type": "Point",
-      "coordinates": [-58.07972, -32.31147],
       "lat": -32.31147,
-      "lng": -58.07972,
       "lon": -58.07972
     },
-    "elements": ["Cancha de fútbol", "Juegos de plaza", "Bancos"],
-    "pictures": []
+    "playground": { "exists": true },
+    "hazards": { "exists": false },
+    "elements": {
+      "ramps": [],
+      "wcs": [],
+      "playgrounds": [
+        {
+          "description": "Sector de juegos de plaza junto a la cancha",
+          "accessible": false,
+          "lat": -32.31140,
+          "lon": -58.07965
+        }
+      ],
+      "hazards": []
+    }
   },
   {
     "name": "Plaza de los Deportes",
-    "department": "Paysandú",
+    "description": "Complejo deportivo público con pista de atletismo, canchas multifunción y equipamiento aeróbico.",
+    "accessibilityDescription": "Dispone de vestuarios con baños (sin adaptación accesible), juegos y circulación interna pavimentada; falta registrar rampas de acceso y obstáculos.",
     "location": {
-      "type": "Point",
-      "coordinates": [-58.08197, -32.32466],
       "lat": -32.32466,
-      "lng": -58.08197,
       "lon": -58.08197
     },
-    "elements": ["Pista de atletismo", "Equipamiento aeróbico", "Canchas", "Iluminación"],
-    "pictures": []
-  },
-  {
-    "name": "Plaza Falsa 1",
-    "demo": true,
-    "department": "Paysandú",
-    "location": {
-      "type": "Point",
-      "coordinates": [-58.0700, -32.3100],
-      "lat": -32.3100,
-      "lng": -58.0700
+    "paths": {
+      "exists": true,
+      "accessible": true,
+      "description": "Circuito interno pavimentado y continuo alrededor de las canchas"
     },
-    "elements": ["Elemento de prueba 1"],
-    "pictures": []
-  },
-  {
-    "name": "Plaza Falsa 2",
-    "demo": true,
-    "department": "Paysandú",
-    "location": {
-      "type": "Point",
-      "coordinates": [-58.0710, -32.3110],
-      "lat": -32.3110,
-      "lng": -58.0710
-    },
-    "elements": ["Elemento de prueba 2"],
-    "pictures": []
-  },
-  {
-    "name": "Plaza Falsa 3",
-    "demo": true,
-    "department": "Paysandú",
-    "location": {
-      "type": "Point",
-      "coordinates": [-58.0720, -32.3120],
-      "lat": -32.3120,
-      "lng": -58.0720
-    },
-    "elements": ["Elemento de prueba 3"],
-    "pictures": []
-  },
-  {
-    "name": "Plaza Falsa 4",
-    "demo": true,
-    "department": "Paysandú",
-    "location": {
-      "type": "Point",
-      "coordinates": [-58.0730, -32.3130],
-      "lat": -32.3130,
-      "lng": -58.0730
-    },
-    "elements": ["Elemento de prueba 4"],
-    "pictures": []
-  },
-  {
-    "name": "Plaza Falsa 5",
-    "demo": true,
-    "department": "Paysandú",
-    "location": {
-      "type": "Point",
-      "coordinates": [-58.0740, -32.3140],
-      "lat": -32.3140,
-      "lng": -58.0740
-    },
-    "elements": ["Elemento de prueba 5"],
-    "pictures": []
+    "wc": { "exists": true, "accessible": false },
+    "playground": { "exists": true },
+    "elements": {
+      "ramps": [],
+      "wcs": [
+        {
+          "description": "Baños en sector de vestuarios con puerta angosta",
+          "accessible": false,
+          "lat": -32.32472,
+          "lon": -58.08190
+        }
+      ],
+      "playgrounds": [
+        {
+          "description": "Zona de juegos y estaciones saludables al aire libre",
+          "accessible": true,
+          "lat": -32.32460,
+          "lon": -58.08188
+        }
+      ],
+      "hazards": []
+    }
   }
 ]

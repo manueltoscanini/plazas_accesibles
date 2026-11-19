@@ -77,8 +77,17 @@ exports.getById = async (req, res) => {
       Ramp.find(q).lean(),
       Hazard.find(q).lean(),
     ]);
+    const clean = list => list.filter(item => !/robot\s*malvado|elemento\s*de\s*prueba/i.test(item?.description || ''));
 
-    res.json({ ...square, elements: { wcs, playgrounds, ramps, hazards } });
+    res.json({
+      ...square,
+      elements: {
+        wcs: clean(wcs),
+        playgrounds: clean(playgrounds),
+        ramps: clean(ramps),
+        hazards: clean(hazards),
+      },
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

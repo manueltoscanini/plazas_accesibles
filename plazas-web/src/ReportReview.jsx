@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { request } from './api'
 import { photoTitles } from './photos'
+import { isInvalidText } from './squareData'
 
 const actions = { add: 'Agregar', modify: 'Modificar', delete: 'Quitar' }
 const elements = { WC: 'baño', Playground: 'zona de juegos', Ramp: 'rampa', Hazard: 'obstáculo' }
@@ -38,7 +39,7 @@ export default function ReportReview({ squares, token, onApproved }) {
     request('/reports/pending', { token, signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]) })
       .then(data => {
         if (!Array.isArray(data)) throw new Error('La API no devolvió una lista de pendientes.')
-        if (!controller.signal.aborted) setReports(data)
+        if (!controller.signal.aborted) setReports(data.filter(report => !isInvalidText(JSON.stringify(report.changes ?? {}))))
       })
       .catch(err => { if (!controller.signal.aborted) setError(err.message) })
     return () => controller.abort()

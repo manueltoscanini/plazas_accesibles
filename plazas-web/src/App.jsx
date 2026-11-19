@@ -9,6 +9,7 @@ import ReportForm from './ReportForm'
 import ReportReview from './ReportReview'
 import SquareDetail from './SquareDetail'
 import { request } from './api'
+import { normalizeSquare } from './squareData'
 import './App.css'
 
 // Acá junto el mapa, la ficha y las ventanas. Con useState React se acuerda de cosas como la plaza que elegiste.
@@ -45,7 +46,7 @@ export default function App() {
       try {
         const data = await request('/square/list', { signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]) })
         if (!Array.isArray(data)) throw new Error('La API no devolvió una lista de plazas válida.')
-        if (!controller.signal.aborted) setSquares(data.filter(square => !square.demo))
+        if (!controller.signal.aborted) setSquares(data.map(normalizeSquare).filter(Boolean))
       } catch (err) { if (!controller.signal.aborted) setError(err.message) }
       finally { if (!controller.signal.aborted) setLoading(false) }
     }
@@ -64,7 +65,7 @@ export default function App() {
       try {
         const data = await request(`/square/${selectedId}`, { signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]) })
         if (!data._id || !Number.isFinite(data.location?.lat) || !Number.isFinite(data.location?.lon)) throw new Error('La plaza no tiene una ubicación válida.')
-        if (!controller.signal.aborted) setDetail(data)
+        if (!controller.signal.aborted) setDetail(normalizeSquare(data))
       } catch (err) { if (!controller.signal.aborted) setDetailError(err.message) }
       finally { if (!controller.signal.aborted) setDetailLoading(false) }
     }
