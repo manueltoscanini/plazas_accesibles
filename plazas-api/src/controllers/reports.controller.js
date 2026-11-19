@@ -13,6 +13,7 @@ const EXISTS_FLAG = {
   Hazard: 'hazards.exists',
 };
 const KEY_RE = /^(add|modify|delete)(WC|Playground|Ramp|Hazard)$/;
+const WITHOUT_RE = /^without(WC|AccessibleWC|Playground|Ramp|Paths|Hazard)$/;
 const PIC_RE = /^(add|delete)Picture$/;
 const FIELDS = ['description', 'picture', 'lat', 'lon', 'accessible'];
 const PHOTO_CATEGORIES = new Set(['ramps', 'wcs', 'accessibleWcs', 'playgrounds', 'hazards']);
@@ -52,6 +53,13 @@ function validateChanges(changes) {
       continue;
     }
 
+    if (WITHOUT_RE.test(key)) {
+      if (data.picture && !isOurImage(data.picture)) {
+        return `${key}: la foto debe subirse primero a la app`;
+      }
+      continue;
+    }
+
     const m = key.match(KEY_RE);
     if (!m) return `Cambio desconocido: ${key}`;
     // Rechaza null, textos y coordenadas fuera del rango real, tambien al modificar.
@@ -81,6 +89,7 @@ function validateChanges(changes) {
 async function applyChanges(report, session) {
   const squareId = report.publicSquareId;
   const touched = new Set();
+  const update = {};
 
   for (const [key, data] of Object.entries(report.changes)) {
     if (PIC_RE.test(key)) {
@@ -89,6 +98,22 @@ async function applyChanges(report, session) {
       const operator = key === 'addPicture' ? '$addToSet' : '$pull';
       const square = await Square.findByIdAndUpdate(squareId, { [operator]: { [field]: data.url } }, { session });
       if (square === null) throw new Error('Plaza no encontrada');
+      continue;
+    }
+
+    const without = key.match(WITHOUT_RE);
+    if (without) {
+      const kind = without[1];
+      if (kind === 'Paths') {
+        Object.assign(update, { 'paths.exists': false, 'paths.accessible': false, 'paths.description': '' });
+      } else if (kind === 'AccessibleWC') {
+        await WC.updateMany({ publicSquareId: squareId }, { $set: { accessible: false } }, { session });
+        update['wc.accessible'] = false;
+      } else {
+        await MODELS[kind].deleteMany({ publicSquareId: squareId }, { session });
+        update[EXISTS_FLAG[kind]] = false;
+        if (kind === 'WC') update['wc.accessible'] = false;
+      }
       continue;
     }
 
@@ -113,7 +138,6 @@ async function applyChanges(report, session) {
     }
   }
 
-  const update = {};
   for (const type of touched) {
     // La misma session permite contar tambien los elementos creados o borrados en esta transaccion.
     const count = await MODELS[type].countDocuments({ publicSquareId: squareId }, { session });

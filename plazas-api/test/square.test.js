@@ -79,3 +79,29 @@ test('la ficha devuelve los detalles de los obstaculos en elements.hazards', asy
   assert.deepEqual(res.body.hazards, { exists: true });
   assert.deepEqual(res.body.elements.hazards, [hazard]);
 });
+
+test('distingue condiciones sin registrar de condiciones sin elementos existentes', () => {
+  const unregistered = new Square({ name: 'Nueva', location: { lat: -32, lon: -58 } }).toObject();
+  assert.equal(unregistered.ramps?.exists, undefined);
+  assert.equal(unregistered.wc?.exists, undefined);
+  assert.equal(unregistered.wc?.accessible, undefined);
+  assert.equal(unregistered.paths?.exists, undefined);
+  assert.equal(unregistered.playground?.exists, undefined);
+  assert.equal(unregistered.hazards?.exists, undefined);
+
+  const withoutElements = new Square({
+    name: 'Relevada',
+    location: { lat: -32, lon: -58 },
+    ramps: { exists: false },
+    wc: { exists: false, accessible: false },
+    paths: { exists: false },
+    playground: { exists: false },
+    hazards: { exists: false },
+  }).toObject();
+  assert.equal(withoutElements.ramps.exists, false);
+  assert.equal(withoutElements.wc.exists, false);
+  assert.equal(withoutElements.wc.accessible, false);
+  assert.equal(withoutElements.paths.exists, false);
+  assert.equal(withoutElements.playground.exists, false);
+  assert.equal(withoutElements.hazards.exists, false);
+});

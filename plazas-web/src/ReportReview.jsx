@@ -4,6 +4,14 @@ import { photoTitles } from './photos'
 
 const actions = { add: 'Agregar', modify: 'Modificar', delete: 'Quitar' }
 const elements = { WC: 'baño', Playground: 'zona de juegos', Ramp: 'rampa', Hazard: 'obstáculo' }
+const absences = {
+  withoutRamp: 'Confirmar: Sin rampas existentes',
+  withoutPaths: 'Confirmar: Sin caminos existentes',
+  withoutWC: 'Confirmar: Sin baños existentes',
+  withoutAccessibleWC: 'Confirmar: Sin baños accesibles existentes',
+  withoutPlayground: 'Confirmar: Sin juegos existentes',
+  withoutHazard: 'Confirmar: Sin obstáculos existentes',
+}
 
 // Acá cambio nombres como addWC por algo que se pueda leer, como «Agregar baño».
 function describeChange(key, change) {
@@ -11,6 +19,7 @@ function describeChange(key, change) {
     const category = Object.hasOwn(photoTitles, change.category) ? change.category : 'all'
     return `${key === 'addPicture' ? 'Agregar foto' : 'Quitar foto'} · ${photoTitles[category]}`
   }
+  if (Object.hasOwn(absences, key)) return absences[key]
   const match = key.match(/^(add|modify|delete)(WC|Playground|Ramp|Hazard)$/)
   return match ? `${actions[match[1]]} ${elements[match[2]]}` : 'Cambio en la ficha'
 }

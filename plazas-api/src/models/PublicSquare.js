@@ -11,18 +11,21 @@ const squareSchema = new mongoose.Schema(
       lat: { type: Number, required: true, min: -90, max: 90 },
       lon: { type: Number, required: true, min: -180, max: 180 },
     },
-    wc: { exists: { type: Boolean, default: false } },
-    playground: { exists: { type: Boolean, default: false } },
-    ramps: { exists: { type: Boolean, default: false } },
+    wc: {
+      exists: { type: Boolean },
+      accessible: { type: Boolean },
+    },
+    playground: { exists: { type: Boolean } },
+    ramps: { exists: { type: Boolean } },
     paths: {
-      exists: { type: Boolean, default: false },
+      exists: { type: Boolean },
       accessible: { type: Boolean, default: false },
       description: { type: String, default: '' },
       pictures: [{ type: String, match: /^https?:\/\/\S+$/i }],
     },
     // Los obstaculos los guardo en PublicSquareHazard; aca solo indico si hay alguno.
     hazards: {
-      exists: { type: Boolean, default: false },
+      exists: { type: Boolean },
     },
     pictures: { type: [String], default: [] },
     // Acá quedan los enlaces de las fotos que ya se aprobaron, separados por categoría.

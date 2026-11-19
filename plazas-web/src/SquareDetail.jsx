@@ -3,22 +3,32 @@ import Modal from './Modal'
 import PhotoGallery from './PhotoGallery'
 import { getPhotoCaptions, getSquarePhotos, photoTitles } from './photos'
 
+// Distingo si hay, si se confirmó que no existen o si todavía no se registraron datos.
+function formatCondition(exists, whenTrue, whenFalse, whenUnregistered) {
+  if (exists === true) return whenTrue
+  if (exists === false) return whenFalse
+  return whenUnregistered
+}
+
 // Acá armo lo que ves cuando abrís una plaza: accesibilidad, fotos y botones para aportar.
 export default function SquareDetail({ square, signedIn, onReport, onAddPhoto }) {
   const [gallery, setGallery] = useState(null)
   const photos = getSquarePhotos(square)
   const captions = getPhotoCaptions(photos)
   const paths = square.paths
-  const hasAccessibleWc = square.elements?.wcs?.some(wc => wc.accessible)
+  const wcs = square.elements?.wcs ?? []
+  const accessibleWc = wcs.length
+    ? wcs.some(wc => wc.accessible)
+    : square.wc?.exists === false ? false : square.wc?.accessible
   const updatedAt = Date.parse(square.updatedAt)
   // Cada fila muestra una condición de la plaza y abre las fotos de ese tipo.
   const conditions = [
-    { category: 'ramps', label: 'Rampas', value: square.ramps?.exists ? 'Hay rampas' : 'Sin rampas registradas' },
-    { category: 'paths', label: 'Caminos internos', value: paths?.description || (paths?.exists ? (paths.accessible ? 'Registrados como accesibles' : 'Consultar condiciones') : 'Sin caminos registrados') },
-    { category: 'wcs', label: 'Baños', value: square.wc?.exists ? 'Hay baños' : 'Sin baños registrados' },
-    { category: 'accessibleWcs', label: 'Baños accesibles', value: hasAccessibleWc ? 'Hay baños accesibles' : 'Sin baños accesibles registrados' },
-    { category: 'playgrounds', label: 'Zona de juegos', value: square.playground?.exists ? 'Hay juegos' : 'Sin juegos registrados' },
-    { category: 'hazards', label: 'Obstáculos', value: square.hazards?.exists ? 'Hay obstáculos reportados' : 'Sin obstáculos registrados' },
+    { category: 'ramps', label: 'Rampas', value: formatCondition(square.ramps?.exists, 'Hay rampas', 'Sin rampas existentes', 'Sin rampas registradas') },
+    { category: 'paths', label: 'Caminos internos', value: paths?.description || formatCondition(paths?.exists, paths?.accessible ? 'Registrados como accesibles' : 'Consultar condiciones', 'Sin caminos existentes', 'Sin caminos registrados') },
+    { category: 'wcs', label: 'Baños', value: formatCondition(square.wc?.exists, 'Hay baños', 'Sin baños existentes', 'Sin baños registrados') },
+    { category: 'accessibleWcs', label: 'Baños accesibles', value: formatCondition(accessibleWc, 'Hay baños accesibles', 'Sin baños accesibles existentes', 'Sin baños accesibles registrados') },
+    { category: 'playgrounds', label: 'Zona de juegos', value: formatCondition(square.playground?.exists, 'Hay juegos', 'Sin juegos existentes', 'Sin juegos registrados') },
+    { category: 'hazards', label: 'Obstáculos', value: formatCondition(square.hazards?.exists, 'Hay obstáculos reportados', 'Sin obstáculos existentes', 'Sin obstáculos registrados') },
   ]
 
   return <div className="detail-content">

@@ -166,6 +166,12 @@ for (const changes of [
   { addRamp: { lat: -90, lon: 180 } },
   { addRamp: { lat: 90, lon: -180 } },
   { modifyWC: { id: new mongoose.Types.ObjectId().toString(), accessible: true } },
+  { withoutRamp: { description: 'No hay rampas en la plaza' } },
+  { withoutPaths: { description: 'No tiene caminos internos' } },
+  { withoutWC: { description: 'No hay baños' } },
+  { withoutAccessibleWC: { description: 'Los baños no son accesibles' } },
+  { withoutPlayground: { description: 'No hay juegos' } },
+  { withoutHazard: { description: 'No se observan obstáculos' } },
 ]) {
   test(`create acepta cambios validos: ${JSON.stringify(changes)}`, async (t) => {
     t.mock.method(Square, 'exists', async () => true);

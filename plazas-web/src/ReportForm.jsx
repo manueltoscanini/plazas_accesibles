@@ -12,6 +12,7 @@ export default function ReportForm({ square, token, onExpired }) {
   const [step, setStep] = useState('')
   const [error, setError] = useState('')
   const [sent, setSent] = useState(false)
+  const isAbsence = type.startsWith('without')
   const asksAccessibility = type === 'WC' || type === 'Playground'
 
   // Antes de mandar el reporte miro que haya texto y un punto. Si pusiste una foto, la subo primero.
@@ -20,7 +21,7 @@ export default function ReportForm({ square, token, onExpired }) {
     const values = new FormData(event.currentTarget)
     const description = values.get('description').trim()
     if (!description) { setError('Describí lo que encontraste.'); return }
-    if (!position) { setError('Marcá la ubicación del hallazgo en el mapa.'); return }
+    if (!isAbsence && !position) { setError('Marcá la ubicación del hallazgo en el mapa.'); return }
 
     const file = values.get('image')
     setError('')
@@ -40,9 +41,9 @@ export default function ReportForm({ square, token, onExpired }) {
           publicSquareId: square._id,
           changes: {
             // Según lo que elegiste, armo el nombre del cambio. Por ejemplo, una rampa va como addRamp.
-            [`add${type}`]: {
+            [isAbsence ? type : `add${type}`]: {
               description,
-              ...position,
+              ...(!isAbsence && position),
               ...(picture && { picture }),
               ...(asksAccessibility && { accessible: values.get('accessible') === 'on' }),
             },
@@ -59,13 +60,23 @@ export default function ReportForm({ square, token, onExpired }) {
       <fieldset className="finding-fields" disabled={Boolean(step)}>
         <label>¿Qué encontraste?
           <select value={type} onChange={event => setType(event.target.value)}>
-            <option value="Hazard">Un obstáculo o peligro</option>
-            <option value="Ramp">Una rampa</option>
-            <option value="WC">Un baño</option>
-            <option value="Playground">Una zona de juegos</option>
+            <optgroup label="Registrar un hallazgo">
+              <option value="Hazard">Un obstáculo o peligro</option>
+              <option value="Ramp">Una rampa</option>
+              <option value="WC">Un baño</option>
+              <option value="Playground">Una zona de juegos</option>
+            </optgroup>
+            <optgroup label="Confirmar que no existen">
+              <option value="withoutRamp">Sin rampas existentes</option>
+              <option value="withoutPaths">Sin caminos existentes</option>
+              <option value="withoutWC">Sin baños existentes</option>
+              <option value="withoutAccessibleWC">Sin baños accesibles existentes</option>
+              <option value="withoutPlayground">Sin juegos existentes</option>
+              <option value="withoutHazard">Sin obstáculos existentes</option>
+            </optgroup>
           </select>
         </label>
-        <LocationPicker square={square} selected={Boolean(position)} onSelect={setPosition} disabled={Boolean(step)} />
+        {!isAbsence && <LocationPicker square={square} selected={Boolean(position)} onSelect={setPosition} disabled={Boolean(step)} />}
         <label>Contanos los detalles
           <textarea name="description" rows={3} required maxLength={1500} placeholder="Por ejemplo, una rama bloquea el paso en la esquina…" />
         </label>
